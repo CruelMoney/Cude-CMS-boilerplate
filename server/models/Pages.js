@@ -25,8 +25,6 @@ var HomePage = new keystone.List('HomePage', {
 });
 HomePage.add({ 
    // introduction: {type: Types.Textarea},
-    cases: { type: Types.Relationship, ref: 'Case', many: true },
-    skills: { type: Types.Relationship, ref: 'Skill', many: true },
 });
 
 HomePage.register();

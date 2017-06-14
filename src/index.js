@@ -5,11 +5,10 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import registerServiceWorker from './CMS/utils/registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
-import './CMS/assets/js/classList.polyfill.js' 
 import App from './app';
+import './Theme/assets/js/classList.polyfill.js' 
 require('smoothscroll-polyfill').polyfill(); //Only client does not work on server
 
 // This value is rendered into the DOM by the server
@@ -48,5 +47,3 @@ if (module.hot) {
     data.store = store;
   });
 }
-
-registerServiceWorker();

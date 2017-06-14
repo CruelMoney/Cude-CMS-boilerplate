@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import  * as a  from './actions';
 import PullDown from '../../assets/icons/pull-down.svg'
 import FeedCursor from '../../higher-order-components/CursorPosition/index'

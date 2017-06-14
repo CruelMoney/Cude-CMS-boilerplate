@@ -13,6 +13,7 @@ process.env.NODE_ENV = 'development';
 
 const resolveOwn = relativePath => path.resolve(__dirname, '.', relativePath);
 
+
 var backendConfig = {
   entry: [
     require.resolve('../polyfills'),
@@ -27,20 +28,10 @@ var backendConfig = {
     publicPath: '/'
   },
   plugins: [
-    // new CopyWebpackPlugin([
-    //         { 
-    //           from: resolveOwn('../../public/assets'),
-    //           to: 'assets' 
-    //         }
-    //     ]),
-    // new HtmlWebpackPlugin({
-    //   inject: true,
-    //   template: resolveOwn('../../public/index.html'),
-    //   filename: "main.html"
-    // }),
     new webpack.DefinePlugin({
       'process.env': {
-        'REACT_APP_BASEURL': JSON.stringify(process.env.REACT_APP_BASEURL)
+           'PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL),
+            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
     }),
     new ExtractTextPlugin({
@@ -50,7 +41,13 @@ var backendConfig = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    // Moment.js is an extremely popular library that bundles large locale files
+    // by default due to how Webpack interprets its code. This is a practical
+    // solution that requires the user to opt into importing specific locales.
+    // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
+    // You can remove this if you don't use Moment.js:
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 
   bail: true,

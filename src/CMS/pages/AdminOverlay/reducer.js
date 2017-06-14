@@ -1,9 +1,7 @@
 import {
   LOGOUT,
-  SAVE_EDITS,
   TOGGLE_EDITMODE,
-  SAVE_EDITS_SUCCEDED,
-  REFRESH_DATA
+  SAVE_EDITS_SUCCEDED
 } from './actions';
 
 const initialState = {

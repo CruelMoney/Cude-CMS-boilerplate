@@ -20,8 +20,7 @@ const debounce = (func, wait, immediate) => {
 
 var throttle = function(func, limit) {
   var inThrottle,
-    lastFunc,
-    throttleTimer;
+    lastFunc;
   return function() {
     var context = this,
       args = arguments;
@@ -34,7 +33,7 @@ var throttle = function(func, limit) {
     } else {
       func.apply(context, args);
       inThrottle = true;
-      return throttleTimer = setTimeout(function() {
+      return setTimeout(function() {
         return inThrottle = false;
       }, limit);
     }
@@ -58,7 +57,7 @@ function hexToRgb(hex) {
 
 function componentToHex(c) {
     var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+    return hex.length === 1 ? "0" + hex : hex;
 }
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);

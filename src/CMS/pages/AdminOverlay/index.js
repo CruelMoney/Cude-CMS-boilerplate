@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import styles from './index.scss';
 import AdminControls from './adminControls'
 import { connect } from 'react-redux';

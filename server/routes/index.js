@@ -96,19 +96,11 @@ const controllers = (app) => {
 
   app.get('/api/configuration', routes.api.index); 
   restful.expose({
-    Case : {
-    	populate : ["categories", "skills"],
-      filter : {
-    		state: "published"
-    	}
-    },
     HomePage : {
       path : "homepage",
-      populate : ["skills"],
       envelop: false
     },
     Text : true,
-    //Skill : true,
   }).start();
   app.get('*', routes.view.index); // The general handler 
 };

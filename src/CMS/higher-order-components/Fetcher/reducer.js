@@ -1,6 +1,5 @@
 import {
   FETCH_SUCCESS,
-  FETCH_FAILURE,
   FETCH_REQUEST,
 } from './actions';
 import{
@@ -82,6 +81,9 @@ export default function reducer(state = initialState, action) {
                 
                 }
         }
-    }
-  return state;
+    
+    default:
+        return state;
+        
+    } 
 };

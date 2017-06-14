@@ -1,18 +1,20 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
-var fs = require('fs');
-var DeepMerge = require('deep-merge');
-
+const path = require('path');
+const fs = require('fs-extra');
+const DeepMerge = require('deep-merge');
+const Visualizer = require('webpack-visualizer-plugin');
 require('dotenv').config()
 const resolveOwn = relativePath => path.resolve(__dirname, '.', relativePath);
 
+// remove current build
+fs.emptyDirSync(resolveOwn("./public/build/"));
 
-var deepmerge = DeepMerge(function (target, source, key) {
+const deepmerge = DeepMerge(function (target, source, key) {
   if (target instanceof Array) {
     return [].concat(target, source);
   }
@@ -20,10 +22,19 @@ var deepmerge = DeepMerge(function (target, source, key) {
 });
 
 // generic
-var defaultConfig = {
+const defaultConfig = {
   bail: true,
-  devtool: 'cheap-module-source-map',
-
+  // We generate sourcemaps in production. This is slow but gives good results.
+  // You can exclude the *.map files from the build during deployment.
+  devtool: 'source-map',
+  stats: {
+      colors: true,
+      chunks: false,
+      children: false
+  },
+  performance: {
+    hints: "warning",
+  },
   module: {
 
     strictExportPresence: true,
@@ -96,8 +107,8 @@ var defaultConfig = {
             loader: 'babel-loader'
           },
           {
-            loader: 'react-svg-loader',
-            options: {
+            loader: require.resolve('react-svg-loader'),
+            query: {
               svgo: {
                 plugins: [{
                   removeTitle: false
@@ -119,10 +130,6 @@ var defaultConfig = {
           babelrc: false,
           presets: [require.resolve('babel-preset-react-app')],
           // @remove-on-eject-end
-          // This is a feature of `babel-loader` for webpack (not Babel itself).
-          // It enables caching results in ./node_modules/.cache/babel-loader/
-          // directory for faster rebuilds.
-          cacheDirectory: true,
         },
       },
       // "postcss" loader applies autoprefixer to our CSS.
@@ -139,7 +146,9 @@ var defaultConfig = {
               loader: require.resolve('css-loader'),
               options: {
                   localIdentName: '[local].[hash:8]',
-                  modules: true
+                  modules: true,
+                  minimize: true,
+                  sourceMap: true,
               }
             },
             {
@@ -165,7 +174,7 @@ var defaultConfig = {
             }
           ]
         }),
-      },
+      }
     ],
   },
 };
@@ -175,8 +184,38 @@ function config(overrides) {
   return deepmerge(defaultConfig, overrides || {});
 }
 
-// frontend
+const commonPlugins = [
+  new webpack.DefinePlugin({
+      'process.env': {
+           'PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL),
+           'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+  }),
+  // Minify the code.
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      // Disabled because of an issue with Uglify breaking seemingly valid code:
+      // https://github.com/facebookincubator/create-react-app/issues/2376
+      // Pending further investigation:
+      // https://github.com/mishoo/UglifyJS2/issues/2011
+      comparisons: false,
+    },
+    output: {
+      comments: false,
+    },
+    sourceMap: true,
+  }),
+  new ExtractTextPlugin({
+            filename: 'build/static/css/[name].css',
+            allChunks: true,
+            // dont use in development, here we want the hot stuff ;P
+            disable: process.env.NODE_ENV !== 'production'
+  }),
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+]
 
+// frontend
 var frontendConfig = config({
   entry: [
     require.resolve('./conf/polyfills'),
@@ -189,41 +228,8 @@ var frontendConfig = config({
     publicPath: '/'
   },
   plugins: [
-    new CopyWebpackPlugin([
-            { 
-              from: './public/assets',
-              to: 'build/assets' 
-            }
-        ]),
-    // new HtmlWebpackPlugin({
-    //   inject: true,
-    //   template: resolveOwn('./public/index.html'),
-    //   filename: "main.html"
-    // }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'REACT_APP_BASEURL': JSON.stringify(process.env.REACT_APP_BASEURL)
-      }
-    }),
-    new ExtractTextPlugin({
-            filename: 'build/static/css/[name].css',
-            allChunks: true
-    }),
-    //  // Minify the code.
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false,
-    //     // Disabled because of an issue with Uglify breaking seemingly valid code:
-    //     // https://github.com/facebookincubator/create-react-app/issues/2376
-    //     // Pending further investigation:
-    //     // https://github.com/mishoo/UglifyJS2/issues/2011
-    //     comparisons: false,
-    //   },
-    //   output: {
-    //     comments: false,
-    //   },
-    //   sourceMap: true,
-    // }),
+    ...commonPlugins,
+    new Visualizer(),
   ]
 });
 
@@ -243,34 +249,27 @@ var backendConfig = config({
     libraryTarget: 'commonjs2'
   },
   node: {
-  
     __dirname: true,
     __filename: true,
-    
   },
-
   plugins: [
-    new webpack.IgnorePlugin(/\.(less|bmp|gif|jpe?g|png)$/),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'REACT_APP_BASEURL': JSON.stringify(process.env.REACT_APP_BASEURL)
-      }
-    }),
-    new ExtractTextPlugin({
-            filename: '[name].css',
-            allChunks: true
-    })
+    ...commonPlugins,
+    // //These files are handled by frontend builder
+    // new webpack.IgnorePlugin(/\.(less|bmp|gif|jpe?g|png|scss|css)$/),
   ],
 });
 
-// tasks
 
+// tasks
 function onBuild(done) {
   return function (err, stats) {
     if (err) {
       console.log('Error', err);
     } else {
-      console.log(stats.toString());
+      console.log(stats.toString({
+        chunks: false, // Makes the build much quieter
+        colors: true
+      }));
     }
 
     if (done) {
@@ -285,16 +284,27 @@ gulp.task('frontend-build', function (done) {
   webpack(frontendConfig).run(onBuild(done));
 });
 
-
 gulp.task('backend-build', function (done) {
   process.env.BABEL_ENV = 'production';
   process.env.NODE_ENV = 'production';
   webpack(backendConfig).run(onBuild(done));
 });
 
+gulp.task('frontend-build-dev', function (done) {
+  process.env.BABEL_ENV = 'development';
+  process.env.NODE_ENV = 'development';
+  webpack(frontendConfig).run(onBuild(done));
+});
+
+gulp.task('backend-build-dev', function (done) {
+  process.env.BABEL_ENV = 'development';
+  process.env.NODE_ENV = 'development';
+  webpack(backendConfig).run(onBuild(done));
+});
+
 gulp.task('build', ['frontend-build', 'backend-build']);
 
-gulp.task('run', function () {
+gulp.task('run', ['frontend-build-dev', 'backend-build-dev'], function () {
   const nodemon = require('nodemon')
   nodemon({
     script: resolveOwn('./server/index'),

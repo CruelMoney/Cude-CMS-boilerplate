@@ -7,9 +7,7 @@ class Logo extends React.Component {
     return (
       <NavLink to="/">
         <div className={styles.logo}>
-            Christopher <br/>
-            Ulrick <br/>
-            Dengsø 
+          LOGO
         </div>
       </NavLink>
     );

@@ -70,7 +70,6 @@ keystone.set('locals', {
 keystone.set('routes', routes);
 
 keystone.set('nav', {
-  'content':['cases', 'case-categories','skills'],
   'users': 'users',
   'pages':['HomePage'],
   'configurations': ['GeneralConfiguration', 'SocialConfiguration', 'APIsConfiguration'],

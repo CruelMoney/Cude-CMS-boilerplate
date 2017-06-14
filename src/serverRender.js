@@ -39,7 +39,7 @@ const render = (initialState, req, htmlTemplate) => {
     var context = {store, promises:[]}
 
     //  Render the app using the context and store
-    const body = htmlToString(store, req, context)
+    htmlToString(store, req, context)
 
     // All components having promises are now fetching data
     Promise.all(context.promises)
