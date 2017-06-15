@@ -33,7 +33,7 @@ const defaultConfig = {
       children: false
   },
   performance: {
-    hints: "warning",
+    hints: process.env.NODE_ENV !== 'production' ? "warning" : false,
   },
   module: {
 
@@ -141,7 +141,6 @@ const defaultConfig = {
         test: [/\.scss$/,/\.css$/],
         loader: ExtractTextPlugin.extract({
           use: [
-            //require.resolve('style-loader'),
             {
               loader: require.resolve('css-loader'),
               options: {
@@ -191,21 +190,6 @@ const commonPlugins = [
            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
   }),
-  // Minify the code.
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      // Disabled because of an issue with Uglify breaking seemingly valid code:
-      // https://github.com/facebookincubator/create-react-app/issues/2376
-      // Pending further investigation:
-      // https://github.com/mishoo/UglifyJS2/issues/2011
-      comparisons: false,
-    },
-    output: {
-      comments: false,
-    },
-    sourceMap: true,
-  }),
   new ExtractTextPlugin({
             filename: 'build/static/css/[name].css',
             allChunks: true,
@@ -214,6 +198,26 @@ const commonPlugins = [
   }),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 ]
+
+if(process.env.NODE_ENV === 'production'){
+  commonPlugins.push(
+    // Minify the code.
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        // Disabled because of an issue with Uglify breaking seemingly valid code:
+        // https://github.com/facebookincubator/create-react-app/issues/2376
+        // Pending further investigation:
+        // https://github.com/mishoo/UglifyJS2/issues/2011
+        comparisons: false,
+      },
+      output: {
+        comments: false,
+      },
+      sourceMap: true,
+    }),
+  )
+}
 
 // frontend
 var frontendConfig = config({

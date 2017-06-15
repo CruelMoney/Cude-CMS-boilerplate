@@ -165,16 +165,17 @@ var backendConfig = {
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
       { 
-        test: [/\.scss$/,/\.css$/],
+        test: [/\.scss$/,/\.css$/],       
         loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
+          fallback: require.resolve('style-loader'),
           use: [
-            //require.resolve('style-loader'),
             {
               loader: require.resolve('css-loader'),
               options: {
                   localIdentName: '[local].[hash:8]',
-                  modules: true
+                  modules: true,
+                  minimize: true,
+                  sourceMap: true,
               }
             },
             {
@@ -200,7 +201,7 @@ var backendConfig = {
             }
           ]
         }),
-      },
+      }
     ],
   },
 }
