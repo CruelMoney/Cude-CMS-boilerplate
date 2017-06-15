@@ -1,9 +1,8 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import fetcher from '../../../CMS/higher-order-components/Fetcher/index'
-//import styles from './index.scss'
+import styles from './index.scss'
 import DocumentMeta from 'react-document-meta';
-
 
 class HomePage extends React.Component {
 
@@ -20,7 +19,7 @@ class HomePage extends React.Component {
     };
     return (
         <Grid   
-        fluid className={"container"}>
+        fluid className={"container " + styles.container}>
          <DocumentMeta {...meta} extend />
           <Row>
             <Col xs={12} >

@@ -68,19 +68,25 @@ const render = (initialState, req, res) => {
 
         // Get meta data
         const meta = DocumentMeta.renderAsHTML();
+        
+        var jsBundles, cssBundles
+        if(process.env.NODE_ENV === "development"){
+          //  Get paths to the webpack generated bundles
+          const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName
+          jsBundles = normalizeAssets(assetsByChunkName.main)
+              .filter(path => path.endsWith('.js'))
+              .map(path => `<script src="${path}"></script>`)
+              .join('\n')
+          cssBundles = normalizeAssets(assetsByChunkName.main)
+              .filter(path => path.endsWith('.css'))
+              .map(path => `<link rel="stylesheet" href="${path}" />`)
+              .join('\n')
+        }else{
+          jsBundles = '<script src="/build/static/js/main.js"></script>'
+          cssBundles = '<link rel="stylesheet" href="/build/static/css/main.css" />'
+        }
 
-        //  Get paths to the webpack generated bundles
-        const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName
-        const jsBundles = normalizeAssets(assetsByChunkName.main)
-            .filter(path => path.endsWith('.js'))
-            .map(path => `<script src="${path}"></script>`)
-            .join('\n')
-        const cssBundles = normalizeAssets(assetsByChunkName.main)
-            .filter(path => path.endsWith('.css'))
-            .map(path => `<link rel="stylesheet" href="${path}" />`)
-            .join('\n')
-
-        // Crate new html
+        // Create new html
         RenderedApp = RenderedApp.replace('{{initialState}}', JSON.stringify(store.getState()))
         RenderedApp = RenderedApp.replace('{{meta}}', meta)
         RenderedApp = RenderedApp.replace('{{cssBundles}}', cssBundles)

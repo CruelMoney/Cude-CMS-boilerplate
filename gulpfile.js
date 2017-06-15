@@ -229,7 +229,6 @@ var frontendConfig = config({
   },
   plugins: [
     ...commonPlugins,
-    process.env.NODE_ENV === 'development' ? new Visualizer() : null,
   ]
 });
 
@@ -256,9 +255,14 @@ var backendConfig = config({
     ...commonPlugins,
     // //These files are handled by frontend builder
     // new webpack.IgnorePlugin(/\.(less|bmp|gif|jpe?g|png|scss|css)$/),
-    process.env.NODE_ENV === 'development' ? new webpackSourceMapSupport() : null,
   ],
 });
+
+
+if(process.env.NODE_ENV === 'development'){
+  backendConfig.plugins.push[new webpackSourceMapSupport()]
+  frontendConfig.plugins.push[new Visualizer()]
+}
 
 
 // tasks
