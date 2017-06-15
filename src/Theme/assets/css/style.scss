@@ -2,25 +2,60 @@
 
 
 /* FONT IMPORT */
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,600');
 
 /* FONT IMPORT END */
 
-/* COLORS */
+/* VARIALBES */
 :root{
 --main-bg-color: #fff;
 --main-text-color: #111111; //#0d2b3e;
 --main-link-color: #1573dd;
 --grey: #f9f9f9;
+--weight-thin: 100;
+--weight-extra-light: 200;  //USED
+--weight-light: 300;        //USED
+--weight-regular: 400;      
+--weight-medium: 500;
+--weight-demi: 600;         //USED
+--weight-bold: 700;
+--weight-extra-bold: 800;
+--weight-heavy: 900;
 }
-/* COLORS END */
+/* VARIALBES END */
 
 
 //Everything below will keep their classnames
 :global{
 
-/* FONT STYLING */
 
+
+/* FONT STYLING */
+body{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--weight-light); 
+  font-size: 12px;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--weight-demi); 
+}
+h2{
+  font-size: 15px;
+}
+.display{
+  font-size: 46px;
+  font-weight: var(--weight-extra-light);
+}
+.manchet{
+  font-size: 20px;
+  font-weight: var(--weight-light);
+}
+button, .button-look, a{
+  font-size: 11px;
+  font-weight: var(--weight-demi);
+  text-decoration: none;
+}
 /* FONT STYLING END */
 
 
@@ -29,6 +64,7 @@
 html{
   background-color: var(--main-bg-color);
 }
+
 
 .container{
   box-sizing: border-box;
@@ -49,8 +85,6 @@ button, .button-look{
     outline: none;
     border-radius: 0px;
     padding: 10px;
-    font-size: 16px;
-    font-family: MaisonBold;
     text-transform: uppercase;
     white-space: nowrap;
     -o-text-overflow: ellipsis;
@@ -63,7 +97,7 @@ button, .button-look{
     display: flex;
     display: inline-block;
     padding-top: 12px;
-    transition: 0.15s;
+    transition: 0.2s;
 }
 
 .divider{

@@ -9,12 +9,12 @@ class HomePage extends React.Component {
 
   render() {
     const meta = {
-      title: 'Cude CMS Test',
-      description: 'React, redux, auto API',
+      title: 'California kitchen',
+      description: 'Feel that cali vibe.',
       meta: {
         charSet: 'utf-8',
         name: {
-          keywords: 'react,meta,document,html,tags'
+          keywords: 'food, california, takeaway, copenhagen'
         }
       }
     };
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
                 Hello world
               </Col>
             </Row>
-          </Grid>
+        </Grid>
     );
   }
 }

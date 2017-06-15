@@ -50,7 +50,11 @@ var backendConfig = {
 
   bail: true,
   devtool: 'cheap-module-source-map',
-
+  stats: {
+      colors: true,
+      chunks: false,
+      children: false
+  },
   module: {
 
     strictExportPresence: true,

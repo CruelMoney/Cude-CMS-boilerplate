@@ -15,13 +15,13 @@ var compression = require('compression');
 const cookieSecret = 's0PfvbfJ=7=GnW2Mn%IUpt7nU7d4dxTu#0e!p8hX6Csbi6mmJvtTjU/X4mkoG/)#y4680GaAVm9V5JQgZr€x5AZ4Bfb9HUI8wTE#'
 
 keystone.init({
-  'name': 'Cude CMS',
-  'brand': 'cude.io',
+  'name': 'California kitchen',
+  'brand': 'California kitchen',
 
   'static': '../public/',
 
   'auto update': true,
-  'mongo': process.env.MONGO_URL || 'mongodb://localhost/keystone-beta',
+  'mongo': process.env.MONGO_URL || 'mongodb://localhost/california-kitchen',
   'cloudinary config': `EXAMPLE:
   {
     cloud_name: 'dsfk4zhug',
