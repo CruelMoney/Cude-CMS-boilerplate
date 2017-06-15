@@ -2,12 +2,12 @@ const gulp = require('gulp');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const fs = require('fs-extra');
 const DeepMerge = require('deep-merge');
 const Visualizer = require('webpack-visualizer-plugin');
+const webpackSourceMapSupport = require("webpack-source-map-support");
 require('dotenv').config()
 const resolveOwn = relativePath => path.resolve(__dirname, '.', relativePath);
 
@@ -229,7 +229,7 @@ var frontendConfig = config({
   },
   plugins: [
     ...commonPlugins,
-    new Visualizer(),
+    process.env.NODE_ENV === 'development' ? new Visualizer() : null,
   ]
 });
 
@@ -256,6 +256,7 @@ var backendConfig = config({
     ...commonPlugins,
     // //These files are handled by frontend builder
     // new webpack.IgnorePlugin(/\.(less|bmp|gif|jpe?g|png|scss|css)$/),
+    process.env.NODE_ENV === 'development' ? new webpackSourceMapSupport() : null,
   ],
 });
 
@@ -264,14 +265,17 @@ var backendConfig = config({
 function onBuild(done) {
   return function (err, stats) {
     if (err) {
-      console.log('Error', err);
-    } else {
+      err && console.log(err);
+    }else{
       console.log(stats.toString({
-        chunks: false, // Makes the build much quieter
-        colors: true
+          chunks: false, // Makes the build much quieter
+          colors: true
       }));
     }
-
+    // KILL EVERYTHING IF FAILING
+    if (err || stats.hasErrors()) {
+      process.exit()
+    }
     if (done) {
       done();
     }

@@ -1,8 +1,6 @@
 'use strict';
 const path = require( 'path')
 const fs = require( 'fs')
-const getGhContribStats = require( 'github-contrib-stats')
-const dataFecther = require( './externalDataFetcher')
 const {render} = require('../../../public/build/server/serverRender')
 
 exports = module.exports = (req, res, next) => {
@@ -22,7 +20,6 @@ exports = module.exports = (req, res, next) => {
 
     try {
         //  TODO  move this fetching to the frontend
-       // initialState = await dataFecther(initialState) 
         const RenderedApp = await render(initialState, req, htmlTemplate)
         res.send(RenderedApp)
     } catch (error) {

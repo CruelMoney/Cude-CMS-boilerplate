@@ -2,9 +2,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var nodeExternals = require('webpack-node-externals');
 var path = require('path');
 var fs = require('fs');
 

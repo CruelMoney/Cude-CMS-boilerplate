@@ -46,7 +46,7 @@ export function saveEdits (apiData) {
       if (!apiData[endpoint].isEndpoint || !apiData[endpoint].edits){ return }
       Object.keys(apiData[endpoint].edits).forEach(id=>{
         promises.push(
-          fetch(process.env.REACT_APP_BASEURL+endpoint+'/'+id, {
+          fetch(process.env.PUBLIC_URL+endpoint+'/'+id, {
               method: 'PATCH',
               headers: new Headers({
                 'Content-Type': 'application/json'

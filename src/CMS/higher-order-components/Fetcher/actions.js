@@ -16,12 +16,15 @@ export function fetchSuccess (data, endpoint) {
 }
 
 export function fetchData(endpoint) { 
-  return (dispatch, getState) => {
+  return (dispatch) => {
+    console.log(dispatch)
     dispatch(fetchRequest(endpoint))
-    return fetch(process.env.REACT_APP_BASEURL+endpoint)
+    fetch(process.env.PUBLIC_URL+endpoint)
       .then(res=>res.json())
       .then((res) =>dispatch(fetchSuccess(res, endpoint)))
       .catch(err=>{
+        console.log("public url: " + process.env.PUBLIC_URL)
+        console.log("endpoint: " + endpoint)
         console.log(err)
         dispatch(fetchFailure(endpoint))})
   }
