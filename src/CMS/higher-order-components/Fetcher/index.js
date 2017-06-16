@@ -28,8 +28,7 @@ export default function fetcher(WrappedComponent, APIEndpoint) {
             if(!this.props.fetching){
                 if (this.context.staticContext && !this.context.staticContext.resolved){
                     const store = this.context.staticContext.store
-                    const action = fetchData(APIEndpoint)
-                    this.context.staticContext.promises.push(store.dispatch(action))
+                    this.context.staticContext.promises.push(store.dispatch(fetchData(APIEndpoint)))
                 }else{
                     if (this.props.data.length === 0) this.props.fetchData()
                 }

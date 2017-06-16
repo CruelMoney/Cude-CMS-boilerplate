@@ -3,7 +3,7 @@ import Index from './Theme/index';
 import AdminOverlay from './CMS/pages/AdminOverlay/index'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import './CMS/assets/css/cms.scss'; //CMS style
+import './CMS/assets/css/cms.css'; //CMS style
 
 class App extends React.Component {
   static childContextTypes = {

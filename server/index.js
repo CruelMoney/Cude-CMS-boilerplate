@@ -22,13 +22,13 @@ keystone.init({
 
   'auto update': true,
   'mongo': process.env.MONGO_URL || 'mongodb://localhost/california-kitchen',
-  'cloudinary config': `EXAMPLE:
+  'cloudinary config': 
   {
     cloud_name: 'dsfk4zhug',
     api_key   : '812268535114128',
     api_secret: 'VPKmNymoZ43m5EU_xoyo3B9AWEw',
   }
-  `,
+  ,
   'session': true,
   'session store': process.env.NODE_ENV !== "production" ? null : "mongo",
   'auth': true,
@@ -71,7 +71,9 @@ keystone.set('routes', routes);
 
 keystone.set('nav', {
   'users': 'users',
-  'pages':['HomePage'],
+  'pages':'homepages',
+  'bowls':'bowls',
+  'sliders': 'sliders',
   'configurations': ['GeneralConfiguration', 'SocialConfiguration', 'APIsConfiguration'],
 });
 

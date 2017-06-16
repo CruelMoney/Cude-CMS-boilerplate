@@ -4,7 +4,7 @@ const keystone = require('keystone');
 const Social = keystone.list('SocialConfiguration');
 const General = keystone.list('GeneralConfiguration');
 const APIs = keystone.list('APIsConfiguration');
-const HomePage = keystone.list('HomePage');
+const Homepage = keystone.list('Homepage');
 
 
 module.exports = function(done) {
@@ -14,7 +14,7 @@ module.exports = function(done) {
   }).save();
   new APIs.model({
   }).save();
-  new HomePage.model({
+  new Homepage.model({
       title: "Homepage"
   }).save(done);
 }

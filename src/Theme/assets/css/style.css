@@ -9,24 +9,21 @@
 /* VARIALBES */
 :root{
 --main-bg-color: #fff;
---main-text-color: #111111; //#0d2b3e;
+--main-text-color: #343434; 
 --main-link-color: #1573dd;
---grey: #f9f9f9;
+--color-yellow: #F9CD44;
+--color-grey: #EEECFD;
 --weight-thin: 100;
---weight-extra-light: 200;  //USED
---weight-light: 300;        //USED
+--weight-extra-light: 200;  
+--weight-light: 300;        
 --weight-regular: 400;      
 --weight-medium: 500;
---weight-demi: 600;         //USED
+--weight-demi: 600;         
 --weight-bold: 700;
 --weight-extra-bold: 800;
 --weight-heavy: 900;
 }
 /* VARIALBES END */
-
-
-//Everything below will keep their classnames
-:global{
 
 
 
@@ -35,26 +32,42 @@ body{
   font-family: 'Montserrat', sans-serif;
   font-weight: var(--weight-light); 
   font-size: 12px;
+  color: var(--main-text-color);
+  letter-spacing: 0.5px;
+  line-height: 20px;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: 'Montserrat', sans-serif;
   font-weight: var(--weight-demi); 
+  letter-spacing: 1.5px;
+  line-height: 18px;
 }
 h2{
   font-size: 15px;
+  margin-bottom: 28px;
 }
 .display{
   font-size: 46px;
   font-weight: var(--weight-extra-light);
+  letter-spacing: 2px;
+  line-height: 58px;
 }
 .manchet{
   font-size: 20px;
   font-weight: var(--weight-light);
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  line-height: 32px;
 }
 button, .button-look, a{
   font-size: 11px;
   font-weight: var(--weight-demi);
   text-decoration: none;
+  color: var(--main-text-color);
+  transition: 0.4s;
+}
+a:hover{
+  color: var(--color-yellow); 
 }
 /* FONT STYLING END */
 
@@ -65,17 +78,23 @@ html{
   background-color: var(--main-bg-color);
 }
 
-
 .container{
   box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  padding: 0 62px;
 }
 .fixed{
   position: fixed;
 }
-
+section{
+  margin-bottom: 99px;
+}
+div[class^="col-"]{
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
 /* LAYOUT END */
 
 
@@ -96,10 +115,13 @@ button, .button-look{
     text-decoration: none;
     display: flex;
     display: inline-block;
-    padding-top: 12px;
     transition: 0.2s;
 }
-
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .divider{
     height: 1px;
     width: 100%;
@@ -107,6 +129,13 @@ button, .button-look{
     margin-bottom: 35px;
     background-color: rgb(224, 224, 224);
     padding: 0px;
+}
+.faded{
+  color: #989898;
+}
+.full-width{
+  background-color: var(--color-grey);
+  padding: 60px;
 }
 
 /* COMMON ELEMENTS END */
@@ -118,8 +147,4 @@ button, .button-look{
   img{
     opacity: 1;
   }
-}
-
-
-
 }

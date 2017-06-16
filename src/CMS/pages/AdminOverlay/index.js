@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.scss';
+import styles from './index.module.css';
 import AdminControls from './adminControls'
 import { connect } from 'react-redux';
 

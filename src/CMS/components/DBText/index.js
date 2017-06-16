@@ -53,7 +53,10 @@ class EditableText extends React.Component {
 class ConnectedText extends React.Component {
 
     static contextTypes={
-        staticContext: PropTypes.object
+        staticContext: PropTypes.object,
+    }
+    static propTypes={
+        dbKey: PropTypes.string.isRequired
     }
 
 
@@ -62,10 +65,9 @@ class ConnectedText extends React.Component {
         if (this.context.staticContext && this.props.haveFetched){
             const found = this.props.data.some(t=>t.key===this.props.dbKey)
             // Create text if does not exist
-           
             if (!found){
                 this.context.staticContext.promises.push(
-                    fetch(process.env.REACT_APP_BASEURL+'/api/texts', {
+                    fetch(process.env.PUBLIC_URL+'/api/texts', {
                         method: 'POST',
                         headers: new Headers({
                         'Content-Type': 'application/json'
@@ -83,12 +85,12 @@ class ConnectedText extends React.Component {
         const content = dbText ? dbText.content : null
         return (
                 <EditableText 
-                {...this.props}
-                key={dbText._id}
-                registerEdits={this.props.registerEdits}
-                entityID={dbText._id}
-                content={content}
-                entityField="content"
+                    {...this.props}
+                    key={dbText._id}
+                    registerEdits={this.props.registerEdits}
+                    entityID={dbText._id}
+                    content={content}
+                    entityField="content"
                 />
         );
     }

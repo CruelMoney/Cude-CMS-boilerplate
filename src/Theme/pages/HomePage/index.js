@@ -1,8 +1,13 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import fetcher from '../../../CMS/higher-order-components/Fetcher/index'
-import styles from './index.scss'
+import styles from './index.module.css'
 import DocumentMeta from 'react-document-meta';
+import Slider from '../../blocks/Slider'
+import DBText from '../../../CMS/components/DBText'
+import DBImage from '../../../CMS/components/DBImage'
+import Featured from '../Featured'
+import Button from '../../components/Button'
+import fetcher from '../../../CMS/higher-order-components/Fetcher'
 
 class HomePage extends React.Component {
 
@@ -17,19 +22,90 @@ class HomePage extends React.Component {
         }
       }
     };
+    const sliderImages = this.props.data.slider && this.props.data.slider.images
+
     return (
-        <Grid   
-        fluid className={"container " + styles.container}>
-         <DocumentMeta {...meta} extend />
-          <Row>
-            <Col xs={12} >
-                Hello world
+        <div id="homepage">
+          <DocumentMeta {...meta} extend />
+          <Grid fluid className={"container"}>
+            <Row>
+              <Col xs={12} >
+                <Slider images={sliderImages} />
               </Col>
             </Row>
-        </Grid>
+          </Grid>
+           
+          <section className="full-width">
+            <Row center="xs">
+              <Col xs={6} >
+                <h2>
+                  <DBText dbKey="homepage-welcome">
+                    welcome
+                  </DBText>
+                </h2>
+                <div className="manchet">
+                  <DBText dbKey="homepage-welcome-text">
+                    California Kitchen is a fast-casual healthy lifestyle restaurant that provides a unique and distinguishable California experience by way of taste, education, hospitality and design.
+                  </DBText>
+                </div>
+              </Col>
+            </ Row>
+          </section>
+
+            <Grid fluid className={"container"}>
+            <section>
+            <Row center="xs" >
+              <Col xs={10} >
+              <h2>
+                <DBText dbKey="homepage-our-favorites">
+                  our favorites
+                </DBText>
+              </h2>
+              <Featured />
+              <Button>
+                <DBText dbKey="homepage-our-favorites-button">
+                  FULL MENU
+                </DBText>
+              </Button>
+              </Col>
+            </ Row>
+            </section>
+
+            <section>
+            <Row  center="xs">
+              <Col xs={8} >
+              <h2>
+                <DBText dbKey="homepage-about-us">
+                  about us
+                </DBText>
+              </h2>
+              <Row className={styles.aboutUs}>
+                <Col sm={6}>
+                  <DBImage dbKey="homepage-about-us-image" />
+                </Col>
+                <Col sm={6}>
+                  <div className="manchet">
+                    <DBText dbKey="homepage-about-us-manchet">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </DBText>
+                  </div>
+                  <DBText dbKey="homepage-about-us-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.                  
+                  </DBText>
+                </Col>
+              </Row>
+              </Col>
+            </ Row>
+            </section>
+
+          </Grid>
+      </div>
+        
     );
   }
 }
 
-export default fetcher(HomePage, '/api/configuration')
+export default fetcher(HomePage, "/api/homepage")
   

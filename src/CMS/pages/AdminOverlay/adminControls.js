@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import  * as a  from './actions';
 import PullDown from '../../assets/icons/pull-down.svg'
 import FeedCursor from '../../higher-order-components/CursorPosition/index'
-import styles from './index.scss';
+import styles from './index.module.css';
 
 const mapStateToProps = (state, ownProps) => {
   return {

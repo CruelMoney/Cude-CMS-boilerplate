@@ -16,10 +16,9 @@ export function fetchSuccess (data, endpoint) {
 }
 
 export function fetchData(endpoint) { 
-  return (dispatch) => {
-    console.log(dispatch)
+  return (dispatch, getState) => {
     dispatch(fetchRequest(endpoint))
-    fetch(process.env.PUBLIC_URL+endpoint)
+    return fetch(process.env.PUBLIC_URL+endpoint)
       .then(res=>res.json())
       .then((res) =>dispatch(fetchSuccess(res, endpoint)))
       .catch(err=>{

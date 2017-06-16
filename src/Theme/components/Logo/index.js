@@ -1,13 +1,14 @@
 import React from 'react';
-import styles from './index.scss'
+import styles from './index.module.css'
 import { NavLink } from 'react-router-dom';
+import LogoSVG from '../../assets/icons/logo.svg'
 
 class Logo extends React.Component {
   render() {
     return (
       <NavLink to="/">
         <div className={styles.logo}>
-          LOGO
+          <LogoSVG />
         </div>
       </NavLink>
     );
@@ -15,4 +16,3 @@ class Logo extends React.Component {
 }
 
 export default Logo
-

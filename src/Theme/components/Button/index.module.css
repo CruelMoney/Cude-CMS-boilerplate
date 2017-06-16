@@ -1,0 +1,55 @@
+.button{
+    border-color: inherit;
+    color: inherit;
+    position: relative;
+    transition: 0.8s;
+    background: transparent;
+    visibility: visible;
+     transition: .4s cubic-bezier(.165,.84,.44,1);
+    border-color: var(--main-text-color);
+    width: 189px;
+    height: 40px;
+    a{
+        color: inherit !important;
+        transition: none;
+    }
+    
+}
+.button:hover{
+    background: transparent;
+    border-color:  var(--color-yellow);
+    color: white;
+}
+.wrapper{
+    position: relative;
+    display: inline-block;
+    visibility: hidden;
+   
+    .hover{
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        bottom: 1px;
+        right: 1px;
+        visibility: hidden;
+        background:  var(--color-yellow);
+        overflow: hidden;
+    }
+    .hover:before{
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:  var(--color-yellow);
+        transition: transform .4s cubic-bezier(.165,.84,.44,1);
+        transform: translate3d(0,105%,0);
+        visibility: visible;
+    }
+}
+.wrapper:hover{
+     .hover:before{
+         transform: none;
+     }
+}

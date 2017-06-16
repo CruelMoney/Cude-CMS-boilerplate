@@ -1,1 +1,1 @@
-import './CMS/assets/css/cms.scss'; //CMS style
+import './CMS/assets/css/cms.css'; //CMS style

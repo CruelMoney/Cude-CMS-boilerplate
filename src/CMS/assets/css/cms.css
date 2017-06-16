@@ -1,7 +1,6 @@
 /* common style for the cms system */
 
-//Everything below will keep their classnames
-:global{
+
 body {
   margin: 0;
   padding: 0;
@@ -33,10 +32,4 @@ img{
   outline-width: 5px;
   min-width: 10px;
   min-height: 10px;
-}
-
-
-
-
-
 }

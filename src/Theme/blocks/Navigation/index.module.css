@@ -1,0 +1,23 @@
+.menuWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 22px;
+    height: 108px;
+    margin-bottom: 61px;
+    ul{
+        display: flex;
+        flex-direction: row;
+        li{
+            margin-right: 25px;
+        }
+    }
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%) translateY(30px);
+}

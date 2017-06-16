@@ -16,15 +16,16 @@ BasePage.add(
 BasePage.register();
 
 
-var HomePage = new keystone.List('HomePage', { 
+var Homepage = new keystone.List('Homepage', { 
     inherits: BasePage, 
 	hidden: false,
-	label: "Homepage",
+	label: "homepage",
     nocreate: true, //Single item
     nodelete: true, //Single item
 });
-HomePage.add({ 
-   // introduction: {type: Types.Textarea},
+Homepage.add({ 
+	slider: { type: Types.Relationship, ref: 'Slider', many: false },
+    favoriteBowls: { type: Types.Relationship, ref: 'Bowl', many: true },
 });
 
-HomePage.register();
+Homepage.register();

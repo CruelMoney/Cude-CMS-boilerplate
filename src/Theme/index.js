@@ -3,7 +3,7 @@ import Navigation from './blocks/Navigation/';
 import Homepage from './pages/HomePage/'
 import Footer from './blocks/Footer/';
 
-import './assets/css/style.scss'; //theme style
+import './assets/css/style.css'; //theme style
 
 export default class Index extends React.Component {
 

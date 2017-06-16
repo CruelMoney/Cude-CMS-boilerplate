@@ -95,14 +95,16 @@ const routes = {
 
 // Bind Routes
 const controllers = (app) => {
-
   app.get('/api/configuration', routes.api.index); 
   restful.expose({
-    HomePage : {
+    Homepage : {
       path : "homepage",
+      populate : ["slider", "favoriteBowls"],
       envelop: false
     },
     Text : true,
+    Image : true,
+    Slider : true,
   }).start();
   app.get('*', routes.view.index); // The general handler 
 };
