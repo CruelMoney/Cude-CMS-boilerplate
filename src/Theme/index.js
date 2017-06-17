@@ -5,8 +5,7 @@ import Footer from './blocks/Footer/';
 
 import './assets/css/style.css'; //theme style
 
-export default class Index extends React.Component {
-
+class Index extends React.Component {
   render() {
     return (
       <main>
@@ -20,6 +19,4 @@ export default class Index extends React.Component {
   }
 }
 
-
-
-
+export default fetcher(Index, '/api/configuration')
