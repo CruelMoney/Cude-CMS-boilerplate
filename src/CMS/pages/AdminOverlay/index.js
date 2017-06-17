@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.module.css';
 import AdminControls from './adminControls'
 import { connect } from 'react-redux';
+import '../../assets/css/cms.css'
 
 const mapStateToProps = (state, ownProps) => {
   return {

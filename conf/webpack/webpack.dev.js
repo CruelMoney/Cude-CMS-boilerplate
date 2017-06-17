@@ -187,7 +187,8 @@ var backendConfig = {
       // By default we support CSS Modules with the extension .modules.css
       {
         test: /\.css$/,
-        exclude: /\.module\.css$/,
+        exclude:[ /\.module\.css$/, /flexboxgrid/],
+       
         use: [
           require.resolve('style-loader'),
           {
@@ -222,6 +223,11 @@ var backendConfig = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules',
+        include: /flexboxgrid/
+      }
     ],
   },
 }

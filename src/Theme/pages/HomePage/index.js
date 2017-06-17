@@ -28,11 +28,28 @@ class HomePage extends React.Component {
         <div id="homepage">
           <DocumentMeta {...meta} extend />
           <Grid fluid className={"container"}>
-            <Row>
-              <Col xs={12} >
-                <Slider images={sliderImages} />
-              </Col>
-            </Row>
+            <section>
+              <Row>
+                <Col xs={12} >
+                  <Slider images={sliderImages}>
+                    <Row middle="xs" center="xs" className={styles.sliderContent}>
+                      <Col sm={4}>
+                        <div className="display">
+                            <DBText dbKey="homepage-slider-welcome">
+                              Welcome to California Kitchen
+                            </DBText>
+                        </div>
+                        <Button white>
+                          <DBText dbKey="homepage-slider-button">
+                            ORDER FOOD
+                          </DBText>
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Slider> 
+                </Col>
+              </Row>
+            </section>
           </Grid>
            
           <section className="full-width">

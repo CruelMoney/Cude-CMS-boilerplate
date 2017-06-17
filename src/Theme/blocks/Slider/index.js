@@ -8,21 +8,25 @@ class Slider extends React.Component {
     
     render() {
         var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
+        arrows: false,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        lazyLoad: true
     };
-    console.log(this.props)
         return (
             <div className={styles.sliderWrapper}>  
                 <ReactSlider {...settings}>
                     {
                      this.props.images && this.props.images.map((img,idx)=>{
-                        return <img key={"sliderimage-"+idx} src={img.secure_url} alt="food"/>
+                        return <img 
+                        draggable="false"
+                        key={"sliderimage-"+idx} src={img.secure_url} alt="food"/>
                     })}
                 </ReactSlider>
+                {this.props.children}
             </div>
         );
     }   

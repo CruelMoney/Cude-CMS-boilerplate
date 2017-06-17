@@ -1,4 +1,20 @@
 
+
 .sliderWrapper{
     position: relative;
+    height: calc(100vh - 191px - 61px);
+    background: black;
+    img{
+        object-fit:cover;
+        opacity: 0.8;
+    }
+    :global{
+    button.slick-arrow{
+        position: absolute;
+    }
+      .display{
+        margin-bottom: 25px;
+    }  
+    }
+   
 }

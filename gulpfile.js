@@ -199,7 +199,7 @@ const defaultConfig = {
         loader: ExtractTextPlugin.extract(
           Object.assign(
             {
-              fallback: require.resolve('style-loader'),
+             // fallback: require.resolve('style-loader'),
               use: [
                 {
                   loader: require.resolve('css-loader'),

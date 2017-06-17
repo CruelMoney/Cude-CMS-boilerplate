@@ -1,19 +1,32 @@
 .button{
-    border-color: inherit;
     color: inherit;
     position: relative;
     transition: 0.8s;
     background: transparent;
     visibility: visible;
-     transition: .4s cubic-bezier(.165,.84,.44,1);
+    transition: .4s cubic-bezier(.165,.84,.44,1);
+    border: 2px solid white;
     border-color: var(--main-text-color);
     width: 189px;
     height: 40px;
+    outline: none;
+    border-radius: 0px;
+    padding: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    display: inline-block;
     a{
         color: inherit !important;
         transition: none;
     }
     
+}
+.white .button{
+     border-color: white;
 }
 .button:hover{
     background: transparent;

@@ -9,7 +9,7 @@ class Button extends React.Component {
     return (
    <div 
     {...rest}
-   className={styles.wrapper}
+   className={styles.wrapper + (this.props.white ? " " + styles.white : "") }
    >
      <div className={styles.hover}></div>
      <button

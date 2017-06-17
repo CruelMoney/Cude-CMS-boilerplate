@@ -1,12 +1,7 @@
 /* common style for the cms system */
 
+:global{
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-smoothing: antialiased;
-}
 
 textarea {
     border: none;
@@ -22,10 +17,6 @@ textarea {
     color: inherit;
 }
 
-img{
-  display: block;
-}
-
 .editable{
   outline-color:rgb(153, 153, 158);
   outline-style: auto;
@@ -33,3 +24,5 @@ img{
   min-width: 10px;
   min-height: 10px;
 }
+}
+
