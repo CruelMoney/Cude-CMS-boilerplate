@@ -11,7 +11,7 @@ class Featured extends React.Component {
         <Row className={styles.bowls}>
           {this.props.bowls && this.props.bowls.map(bowl=>{
             return(
-              <Col sm={6} >
+              <Col key={bowl._id} sm={6} >
               <div className={styles.bowl}>
                 <div className={styles.info}>
                   <h3

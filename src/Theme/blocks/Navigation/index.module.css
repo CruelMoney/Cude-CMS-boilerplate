@@ -21,3 +21,39 @@
     top: 0;
     transform: translateX(-50%) translateY(30px);
 }
+.social{
+    p{
+        margin: 0;
+        background-color: var(--main-bg-color);
+        position: relative;
+        z-index: 1;
+        transition: transform 0.4s;
+    }
+    ul{
+        justify-content: flex-end;
+        position: absolute;
+        right:0;
+        top:0;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    li{
+        margin-right: 0px !important;
+        margin-left: 10px;
+    }
+}
+.social:hover{
+    p{
+        transform: translateX(-100%);
+    }
+    ul{
+        opacity: 1;
+    }
+}
+
+.facebook:hover svg{
+    fill: #3b5998;
+}
+.instagram:hover svg{
+    fill: #e1306c;
+}

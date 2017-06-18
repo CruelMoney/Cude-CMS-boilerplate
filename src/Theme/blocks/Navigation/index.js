@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from './index.module.css'
 import Logo from '../../components/Logo/index'
+import Facebook from '../../../CMS/assets/icons/facebook.svg'
+import Instagram from '../../../CMS/assets/icons/instagram.svg'
 import { configureAnchors } from 'react-scrollable-anchor'
 configureAnchors({offset: -60, scrollDuration: 600})
 
@@ -41,8 +43,18 @@ class Navigation extends React.Component {
                                 <Logo />
                             </div>   
                             <div>
-                                <a className="faded" href="#instagram">FOLLOW US</a>          
-                            </div>                  
+                            <div className={styles.social}>
+                                <p className="faded">FOLLOW US</p>
+                                <ul className={styles.icons}>
+                                    <li>
+                                        <a className={"faded " + styles.facebook} href=""><Facebook height={20} width={20} /></a>
+                                    </li>
+                                    <li>
+                                        <a className={"faded " + styles.instagram} href=""><Instagram height={20} width={20} /></a>
+                                    </li>
+                                </ul>         
+                            </div>    
+                            </div>              
                             
                         </div>
                     </Col>

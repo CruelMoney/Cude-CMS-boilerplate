@@ -153,6 +153,9 @@ ul{
 .faded{
   color: #989898;
 }
+.faded svg{
+  fill: #989898;
+}
 .full-width{
   background-color: var(--color-grey);
   padding: 60px;
