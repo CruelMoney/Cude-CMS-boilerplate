@@ -35,7 +35,7 @@ class HomePage extends React.Component {
                 <Col xs={12} >
                   <Slider images={sliderImages}>
                     <Row middle="xs" center="xs" className={styles.sliderContent}>
-                      <Col lg={4} md={6} sm={7} xs={9}  >
+                      <Col lg={4} md={6} sm={7} xs={11}  >
                         <div className="display">
                             <DBText dbKey="homepage-slider-welcome">
                               Welcome to California Kitchen
