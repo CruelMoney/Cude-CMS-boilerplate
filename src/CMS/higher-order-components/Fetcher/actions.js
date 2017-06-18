@@ -18,7 +18,7 @@ export function fetchSuccess (data, endpoint) {
 export function fetchData(endpoint) { 
   return (dispatch, getState) => {
     dispatch(fetchRequest(endpoint))
-    return fetch(process.env.PUBLIC_URL+endpoint)
+    return fetch(process.env.PUBLIC_URL+endpoint,{credentials: 'include'})
       .then(res=>res.json())
       .then((res) =>dispatch(fetchSuccess(res, endpoint)))
       .catch(err=>{

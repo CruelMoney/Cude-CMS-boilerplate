@@ -6,7 +6,6 @@ var keystone = require('keystone'),
     
 
 exports = module.exports = function(req, res, next) {
-
 	SocialConfiguration.model.findOne({}, (err, social)=>{
         if (err) return next(err)
         GeneralConfiguration.model.findOne({}, (err, general)=>{

@@ -4,13 +4,16 @@ const {
   initErrorHandlers,
   initLocals,
   flashMessages,
-  includeWebpackHot
+  includeWebpackHot,
+  requireUser,
+  apiAuthenticate
 } = require('./middleware');
 // Pass your keystone instance to the module
 var restful = require('restful-keystone')(keystone);
 const webpackMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpack = require('webpack');
+require('../models/FileUpload'); // Otherwise the list could not be found 
 
 const importRoutes = keystone.importer(__dirname);
 
@@ -70,7 +73,7 @@ if ( process.env.NODE_ENV !== 'production' ) {
 // Common Middleware
 keystone.pre('routes', initErrorHandlers);
 keystone.pre('routes', initLocals);
-keystone.pre('render', flashMessages);
+//keystone.pre('render', flashMessages);
 
 // Handle 404 errors
 keystone.set('404', (req, res, next) => res.notfound());
@@ -95,7 +98,13 @@ const routes = {
 
 // Bind Routes
 const controllers = (app) => {
+  app.post('*', keystone.middleware.api, apiAuthenticate)
+  app.put('*', keystone.middleware.api, apiAuthenticate)
+  app.delete('*', keystone.middleware.api, apiAuthenticate)
+
   app.get('/api/configuration', routes.api.index); 
+
+  //OTHER APIS
   restful.expose({
     Homepage : {
       path : "homepage",
@@ -106,6 +115,15 @@ const controllers = (app) => {
     Image : true,
     Slider : true,
   }).start();
+
+  //File Upload Route
+  app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
+  app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
+  app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
+  app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
+  app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
+
+
   app.get('*', routes.view.index); // The general handler 
 };
 

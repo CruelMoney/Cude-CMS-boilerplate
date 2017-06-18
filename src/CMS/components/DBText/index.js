@@ -69,6 +69,7 @@ class ConnectedText extends React.Component {
                 this.context.staticContext.promises.push(
                     fetch(process.env.PUBLIC_URL+'/api/texts', {
                         method: 'POST',
+                        credentials: 'include',
                         headers: new Headers({
                         'Content-Type': 'application/json'
                         }),

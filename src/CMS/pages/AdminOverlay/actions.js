@@ -48,6 +48,7 @@ export function saveEdits (apiData) {
         promises.push(
           fetch(process.env.PUBLIC_URL+endpoint+'/'+id, {
               method: 'PATCH',
+              credentials: 'include',
               headers: new Headers({
                 'Content-Type': 'application/json'
               }),

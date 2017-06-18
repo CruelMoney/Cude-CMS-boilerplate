@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                 <Col xs={12} >
                   <Slider images={sliderImages}>
                     <Row middle="xs" center="xs" className={styles.sliderContent}>
-                      <Col sm={4}>
+                      <Col lg={4} md={6} sm={7} xs={9}  >
                         <div className="display">
                             <DBText dbKey="homepage-slider-welcome">
                               Welcome to California Kitchen
@@ -78,7 +78,9 @@ class HomePage extends React.Component {
                   our favorites
                 </DBText>
               </h2>
-              <Featured />
+              <Featured 
+                bowls={this.props.data.favoriteBowls}
+              />
               <Button>
                 <DBText dbKey="homepage-our-favorites-button">
                   FULL MENU
@@ -98,7 +100,9 @@ class HomePage extends React.Component {
               </h2>
               <Row className={styles.aboutUs}>
                 <Col sm={6}>
+                <div className={styles.aboutImage}>
                   <DBImage dbKey="homepage-about-us-image" />
+                </div>
                 </Col>
                 <Col sm={6}>
                   <div className="manchet">

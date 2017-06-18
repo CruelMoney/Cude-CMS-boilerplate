@@ -5,7 +5,7 @@ class Button extends React.Component {
   state={hover:false}
  
   render() {
-    let {mainColor, hoverTextColor, ...rest} = {...this.props}
+    let {mainColor, hoverTextColor, white, ...rest} = {...this.props}
     return (
    <div 
     {...rest}

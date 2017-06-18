@@ -18,14 +18,17 @@ class Slider extends React.Component {
     };
         return (
             <div className={styles.sliderWrapper}>  
+                { this.props.images ?
                 <ReactSlider {...settings}>
                     {
-                     this.props.images && this.props.images.map((img,idx)=>{
+                    this.props.images.map((img,idx)=>{
                         return <img 
                         draggable="false"
                         key={"sliderimage-"+idx} src={img.secure_url} alt="food"/>
                     })}
                 </ReactSlider>
+                  : null}
+                
                 {this.props.children}
             </div>
         );

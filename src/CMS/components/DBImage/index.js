@@ -2,94 +2,127 @@ import React from 'react';
 import editor from '../../higher-order-components/Editor/index';
 import fetcher from '../../higher-order-components/Fetcher/index';
 import PropTypes from 'prop-types'
+import Dropzone from 'react-dropzone'
+import styles from './index.module.css'
 
+ 
 
 class EditableImage extends React.Component {
+    state = {accepted: [], rejected: []}
+
 
     static propTypes={
         registerEdits: PropTypes.func.isRequired
     }
 
-
-    render() {
-        return (
-                this.props.editMode ?
-                <div 
-                style={this.props.style}
-                className={this.props.className + " editable"}
-                
-                /*onInput={(event)=>{
-                    this.props.registerEdits(this.props.entityID,{[this.props.entityField]:event.target.innerHTML})}}
-                dangerouslySetInnerHTML={{__html: content} }*/
-                />
-                : //if not editmode
-                <div 
-                    style={this.props.style}
-                    className={this.props.className}
-                />
-
-        
-        );
-    }
-}
-
-class ConnectedImage extends React.Component {
-
-    static contextTypes={
-        staticContext: PropTypes.object
-    }
-
-
-    componentWillMount(){        
-        // only serverside 
-        if (this.context.staticContext && this.props.haveFetched){
-            const found = this.props.data.some(t=>t.key===this.props.dbKey)
-            
-            // Create image if does not exist
-            // if (!found){
-            //     this.context.staticContext.promises.push(
-            //         fetch(process.env.REACT_APP_BASEURL+'/api/texts', {
-            //             method: 'POST',
-            //             headers: new Headers({
-            //             'Content-Type': 'application/json'
-            //             }),
-            //             body: JSON.stringify({key: this.props.dbKey, content: ""})
-            //         })
-            //     )
-            // }
-         }            
+    upload = () =>{
+        if (!this.state.accepted){
+            this.setState({err:"Please select an image."})
+            return
+        }
+        if (!this.state.accepted.length > 1){
+            this.setState({err:"Please select just one image."})
+            return
         }
 
+        var formData  = new FormData();
+        const theFile = this.state.accepted[0]
 
-    render() {
+        formData.append('file_upload', theFile, this.props.dbKey + "." + theFile.name.split('.').pop()); //This is the raw file that was selected
         
+        const dbImage = this.props.data.find(img=>img.name === this.props.dbKey)
+        const url = dbImage ? dbImage.url : null
+        console.log(dbImage)
+        const endPoint = dbImage ? `/api/fileupload/${dbImage._id}/update` : '/api/fileupload/create'
 
-        // THIS COMPONENT SHOULD WORK WITH URLS
-        // WHEN UPLOADING, THE IMAGE SHOULD BE SAVED AS FILE, 
-        // AND IT'S URL SHOULD BE SAVED AT api/images endpoint
-        // WHEN UPLOADING A NEW IMAGE IT SHOULD OVERRID THE LAST ONE
-        // OR ALTERNATIVELY SAVE THE LAST ONE AS WELL, AND OFFER TO REVERT
+        fetch(process.env.PUBLIC_URL+endPoint, {
+            method: dbImage ? "PUT" : 'POST',
+            credentials: 'include',
+            headers: new Headers({
+            
+            }),
+            body: formData
+        }).then(
+            response => response.json() // if the response is a JSON object
+        ).then(
+            result => {
+                if(result.error){
+                    this.setState({error: "Something went wrong."})
+                }else{
+                    this.setState({error: null, url:result.url})
+                }
+                console.log(result)} 
+        ).catch(
+            error => this.setState({error: "Something went wrong."}) // Handle the error response object
+        );
+    }
 
+    handleReject(file){
+        if(file.size > 4000000){
+            this.setState({error: "The file can't be larger than 4mb."})
+            return
+        }
+        
+        this.setState({error: "The file was rejected."})
 
-
-        const dbImage = this.props.data.find(t=>t.key === this.props.dbKey) || {}
-        const content = dbImage ? dbImage.content : null
+    }
+ 
+    render() {
+        const dbImage = this.props.data.find(img=>img.name === this.props.dbKey)
+        const url = dbImage ? dbImage.url : this.state.url
         return (
-                <EditableImage 
-                    {...this.props}
-                    key={dbImage._id}
-                    registerEdits={this.props.registerEdits}
-                    entityID={dbImage._id}
-                    content={content}
-                    entityField="content"
-                />
+            this.props.editMode ?
+                <div 
+                    className={styles.wrapper + " editable"}
+                >
+                    <Dropzone
+                        maxSize={4000000} //byte
+                        multiple={false}
+                        className={styles.dropZone}
+                        accept="image/jpeg, image/png"
+                        onDrop={(accepted, rejected) => { this.setState({ accepted, rejected }); }}
+                        onDropRejected={(file)=>this.handleReject(file)}
+                        activeStyle={{backgroundColor: "rgba(76, 175, 80, 0.5)"}}
+                        rejectStyle={{backgroundColor: "rgba(244, 67, 54, 0.5)"}}
+                    >
+                     
+                    </Dropzone>
+
+                    <div>
+                        <p>Drop image here, or click to select image to upload.</p>
+                        <p>Only *.jpeg and *.png images will be accepted.</p>
+                        {this.state.accepted.length > 0 ?
+                        <button
+                        onClick={this.upload}
+                        >
+                        UPLOAD
+                        </button>
+                        : null}
+                        {this.state.error ?
+                        <p className="error">
+                            {this.state.error}
+                        </p>
+                        : null}
+                        
+                    </div>
+
+                    {url ? 
+                    <img src={process.env.PUBLIC_URL + url} alt=""/>
+                    : null}
+
+                    
+                        
+                </div>
+            :
+            <img src={process.env.PUBLIC_URL + url} alt=""/> 
+        
         );
     }
 }
 
-export default fetcher(
-    editor(ConnectedImage, "/api/images"), 
-    "/api/images")
+
+
+export default fetcher(EditableImage, '/api/fileupload/list')
 
 export { EditableImage }
 

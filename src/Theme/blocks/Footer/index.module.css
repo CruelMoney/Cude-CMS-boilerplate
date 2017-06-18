@@ -2,3 +2,15 @@ footer{
     background-color: var(--color-grey);
     padding: 62px;
 }
+.contact{
+    p{
+        margin: 0;
+    }
+    a{
+        font-weight: var(--weight-light);
+        font-size: 12px;
+    }
+    span{
+        margin-right: 10px;
+    }
+}

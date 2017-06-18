@@ -5,11 +5,23 @@ import DBText from '../../../CMS/components/DBText'
 
 
 class Footer extends React.Component {
+
+
+  
   render(){
+    const contact = this.props.data.general ? this.props.data.general.contact : {}
+    const address = contact ? contact.address : {}
+    const email = contact ? contact.email : null
+    const telephone = contact ? contact.phone : null
+    const street = address ? address.street1 : null
+    const city = address ? address.suburb : null
+    const country = address ? address.country : null
+    const postcode = address ? address.postcode : null
+
     return(
       <footer>
         <Grid className="container" fluid>
-            <Row center="xs" className="full-width">
+            <Row center="xs">
               <Col xs={6} >
               <h2>
                 <DBText dbKey="footer-contact">
@@ -22,11 +34,16 @@ class Footer extends React.Component {
                 </DBText>
               </div>
               <div className={styles.contact}>
-                <a href={this.props.email}>{this.props.email}</a>
-                <a href={this.props.telephone}>{this.props.telephone}</a>
-                <p>{this.props.street}</p>
-                <p>{this.props.city}</p>
-                <p>{this.props.country}</p>
+                <p>
+                 <span className="text-icon">E </span> <a href={email}>{email}</a>
+                </p>
+                <p>
+                  <span className="text-icon">T </span> <a href={telephone}>{telephone}</a>
+                </p>
+                <br />
+                <p>{street}</p>
+                <p>{postcode}, {city}</p>
+                <p>{country}</p>
                 <br />
                 <DBText dbKey="footer-contact-open-hours">
                   Open all days

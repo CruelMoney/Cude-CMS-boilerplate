@@ -80,9 +80,13 @@ a:hover{
 html{
   background-color: var(--main-bg-color);
 }
+body{
+  margin: 0;
+}
 
 .container{
   max-width: 1320px;
+  overflow: auto;
 }
 .fixed{
   position: fixed;
@@ -94,6 +98,24 @@ div[class^="col-"]{
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 }
+main{
+  > div{
+    margin-bottom: 425px;
+    z-index: 1;
+    position: relative;
+    background: white;
+  }
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  box-sizing: border-box;
+  height: 425px;
+}
+
+
 /* LAYOUT END */
 
 
@@ -134,6 +156,12 @@ ul{
 .full-width{
   background-color: var(--color-grey);
   padding: 60px;
+}
+.text-icon{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--weight-demi); 
+  text-transform: uppercase;
+  color: #989898;
 }
 
 /* COMMON ELEMENTS END */

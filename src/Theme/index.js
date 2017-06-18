@@ -6,6 +6,7 @@ import fetcher from '../CMS/higher-order-components/Fetcher'
 import './assets/css/style.css'; //theme style
 
 class Index extends React.Component {
+  
   render() {
     return (
       <main>
@@ -13,7 +14,9 @@ class Index extends React.Component {
           <Navigation />
         </header>
         <Homepage />
-        <Footer />
+        <Footer 
+          data={this.props.data}
+        />
       </main>
     );
   }

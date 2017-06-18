@@ -12,6 +12,7 @@ const serve = require('serve-static')
 var morgan = require('morgan');
 var compression = require('compression');
 
+
 const cookieSecret = 's0PfvbfJ=7=GnW2Mn%IUpt7nU7d4dxTu#0e!p8hX6Csbi6mmJvtTjU/X4mkoG/)#y4680GaAVm9V5JQgZr€x5AZ4Bfb9HUI8wTE#'
 
 keystone.init({
@@ -30,7 +31,7 @@ keystone.init({
   }
   ,
   'session': true,
-  'session store': process.env.NODE_ENV !== "production" ? null : "mongo",
+  'session store': "mongo",
   'auth': true,
   'user model': 'User',
   'cookie secret': process.env.COOKIE_SECRET || cookieSecret,

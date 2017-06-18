@@ -11,7 +11,8 @@ export default function fetcher(WrappedComponent, APIEndpoint) {
         return {
             data:  apidata && apidata.data ? apidata.data : [],
             haveFetched: apidata && apidata.data ? true : false,
-            fetching: apidata ? apidata.fetching : false 
+            fetching: apidata ? apidata.fetching : false,
+            editMode:  state.adminOverlay.editMode
         }
     }
     const mapDispatchToProps = (dispatch) => {  

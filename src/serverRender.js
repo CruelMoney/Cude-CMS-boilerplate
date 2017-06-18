@@ -72,7 +72,6 @@ const render = (initialState, req, res) => {
         var jsBundles, cssBundles
         if(process.env.NODE_ENV === "development"){
           //  Get paths to the webpack generated bundles
-          console.log(res.locals.webpackStats.toJson().assetsByChunkName)
           const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName
           jsBundles = normalizeAssets(assetsByChunkName.main)
               .filter(path => path.endsWith('.js'))

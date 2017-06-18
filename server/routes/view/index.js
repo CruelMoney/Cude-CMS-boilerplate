@@ -5,12 +5,10 @@ const {render} = require('../../../public/build/server/serverRender')
 
 exports = module.exports = async (req, res, next) => {
   
-  var locals = res.locals;
-
   // Create store and context to be populated one first render
   var initialState = {
     adminOverlay: {
-      user: req.user
+      user: res.locals.user
     },
   }
 
