@@ -1,3 +1,14 @@
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    background: rgba(255,255,255,0.9);
+    z-index: 10;
+}
+.grid{
+    overflow: visible !important;
+}
 .menuWrapper{
     position: relative;
     display: flex;
@@ -5,8 +16,7 @@
     width: 100%;
     justify-content: space-between;
     margin-top: 22px;
-    height: 108px;
-    margin-bottom: 61px;
+    margin-bottom: 22px;
     ul{
         display: flex;
         flex-direction: row;
@@ -20,11 +30,36 @@
     left: 50%;
     top: 0;
     transform: translateX(-50%) translateY(30px);
+     transition: transform 0.8s;
+     will-change: transform;
+    svg{
+       
+        g > g:last-child  {
+            transition: opacity 0.8s;
+        }
+    }
+    .animated{
+        svg{
+
+            g > g:last-child  {
+                opacity: 0;
+            }
+        }
+    } 
 }
+.logo.animated{
+      transform: translateX(-50%) translateY(-15px) scale(0.8);
+    svg{
+        g > g:last-child  {
+            opacity: 0;
+        }
+    }
+}
+    
+
 .social{
     p{
         margin: 0;
-        background-color: var(--main-bg-color);
         position: relative;
         z-index: 1;
         transition: transform 0.4s;
@@ -35,12 +70,13 @@
         right:0;
         top:0;
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity 0.2s;
     }
     li{
         margin-right: 0px !important;
         margin-left: 10px;
     }
+
 }
 .social:hover{
     p{
@@ -48,6 +84,7 @@
     }
     ul{
         opacity: 1;
+        transition: opacity 0.8s;
     }
 }
 

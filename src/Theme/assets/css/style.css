@@ -99,6 +99,7 @@ div[class^="col-"]{
   padding-right: 1.2rem;
 }
 main{
+  margin-top: 192px;
   > div{
     margin-bottom: 425px;
     z-index: 1;

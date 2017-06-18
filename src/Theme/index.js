@@ -11,7 +11,7 @@ class Index extends React.Component {
     return (
       <main>
         <header>
-          <Navigation />
+          <Navigation data={this.props.data}/>
         </header>
         <Homepage />
         <Footer 
