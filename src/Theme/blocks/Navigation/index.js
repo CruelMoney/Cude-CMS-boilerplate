@@ -2,8 +2,16 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from './index.module.css'
 import Logo from '../../components/Logo/index'
+import { configureAnchors } from 'react-scrollable-anchor'
+configureAnchors({offset: -60, scrollDuration: 600})
 
 class Navigation extends React.Component {
+    scrollToBottom = () =>{
+        const scrollTo = document.body.scrollHeight
+        window.scroll({top: scrollTo-800, behavior: "smooth"})
+    }
+
+
   render() {
     return (
         <nav >
@@ -20,7 +28,9 @@ class Navigation extends React.Component {
                                         <a href="#menu">MENU</a>
                                     </li>
                                     <li>
-                                        <a href="#contact">CONTACT</a>
+                                        <a 
+                                        onClick={this.scrollToBottom}
+                                        href="#contact">CONTACT</a>
                                     </li>
                                     <li>
                                         <a href="#order">ORDER</a>

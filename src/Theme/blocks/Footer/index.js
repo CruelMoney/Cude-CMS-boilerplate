@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './index.module.css'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import DBText from '../../../CMS/components/DBText'
-import ScrollableAnchor from 'react-scrollable-anchor'
 
 
 class Footer extends React.Component {
@@ -21,8 +20,6 @@ class Footer extends React.Component {
 
     return(
       <footer>
-        <ScrollableAnchor id={"contact"}>
-          <div>
         <Grid className="container" fluid>
             <Row center="xs">
               <Col xs={6} >
@@ -55,8 +52,7 @@ class Footer extends React.Component {
               </Col>
             </ Row>
         </Grid>
-        </div>
-        </ ScrollableAnchor>
+
       </footer>
   )}
 }
