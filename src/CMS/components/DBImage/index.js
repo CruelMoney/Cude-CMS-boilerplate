@@ -109,7 +109,9 @@ class EditableImage extends React.Component {
                         
                 </div>
             :
-            <img src={process.env.PUBLIC_URL + url} alt=""/> 
+            ( url ? 
+            <img src={process.env.PUBLIC_URL + url} alt=""/>
+            : null)
         
         );
     }
