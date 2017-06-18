@@ -56,7 +56,7 @@ class Navigation extends React.Component {
             <Grid fluid className={"container " + styles.grid}>           
                 <Row between="xs">
                     <Col xs={12}>
-                        <div className={styles.menuWrapper}>
+                        <div className={styles.menuWrapper + " " + (this.state.fixed ? styles.animated : "")}>
                             <div className={styles.menu}>
                                 <ul>
                                     <li>
@@ -77,7 +77,7 @@ class Navigation extends React.Component {
                             </div>
                             <div 
                              ref={r=>this.logo=r}
-                            className={styles.logo + " " + (this.state.fixed ? styles.animated : "")}>
+                            className={styles.logo}>
                                 <Logo 
                                
                                 />

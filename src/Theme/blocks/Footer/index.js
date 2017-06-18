@@ -20,9 +20,11 @@ class Footer extends React.Component {
 
     return(
       <footer>
-        <Grid className="container" fluid>
+        <Grid 
+        id="contact"
+        className="container" fluid>
             <Row center="xs">
-              <Col xs={6} >
+              <Col sm={6} >
               <h2>
                 <DBText dbKey="footer-contact">
                   contact
