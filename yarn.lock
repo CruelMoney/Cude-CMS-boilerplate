@@ -5139,6 +5139,10 @@ jsx-ast-utils@^1.3.4, jsx-ast-utils@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-1.4.1.tgz#3867213e8dd79bf1e8f2300c0cfc1efb182c0df1"
 
+jump.js@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jump.js/-/jump.js-1.0.1.tgz#0de2b1631ba9a1c2c6b8572ad277d877e8503600"
+
 kareem@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-1.2.0.tgz#59851e833feb1ce6cf60000e0c23acf75c8a3547"
@@ -7830,6 +7834,12 @@ react-scripts@1.0.7:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.0.17"
+
+react-scrollable-anchor@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-scrollable-anchor/-/react-scrollable-anchor-0.4.2.tgz#d0a26f0194fb8818c3a66d6b6ec92f18d58d6966"
+  dependencies:
+    jump.js "1.0.1"
 
 react-scrolllock@^1.0.1:
   version "1.0.6"

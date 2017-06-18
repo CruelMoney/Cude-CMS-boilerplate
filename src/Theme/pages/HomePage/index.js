@@ -8,6 +8,8 @@ import DBImage from '../../../CMS/components/DBImage'
 import Featured from '../Featured'
 import Button from '../../components/Button'
 import fetcher from '../../../CMS/higher-order-components/Fetcher'
+import ScrollableAnchor from 'react-scrollable-anchor'
+
 
 class HomePage extends React.Component {
 
@@ -70,6 +72,8 @@ class HomePage extends React.Component {
           </section>
 
             <Grid fluid className={"container"}>
+              <ScrollableAnchor id={"menu"}>
+              <div>
             <section>
             <Row center="xs" >
               <Col xs={10} >
@@ -89,8 +93,13 @@ class HomePage extends React.Component {
               </Col>
             </ Row>
             </section>
+                  </ div>
+              </ ScrollableAnchor>
+        
 
             <section>
+            <ScrollableAnchor id={"about"}>
+              <div>
             <Row  center="xs">
               <Col xs={8} >
               <h2>
@@ -119,6 +128,8 @@ class HomePage extends React.Component {
               </Row>
               </Col>
             </ Row>
+            </div>
+            </ ScrollableAnchor>
             </section>
 
           </Grid>

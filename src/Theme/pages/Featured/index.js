@@ -7,8 +7,9 @@ class Featured extends React.Component {
   
   render() {
     return (
+      
         <Row className={styles.bowls}>
-          {this.props.bowls.map(bowl=>{
+          {this.props.bowls && this.props.bowls.map(bowl=>{
             return(
               <Col sm={6} >
               <div className={styles.bowl}>
@@ -35,6 +36,7 @@ class Featured extends React.Component {
             )
           })}
         </Row>
+   
     );
   }
 }

@@ -11,10 +11,6 @@ class EditableImage extends React.Component {
     state = {accepted: [], rejected: []}
 
 
-    static propTypes={
-        registerEdits: PropTypes.func.isRequired
-    }
-
     upload = () =>{
         if (!this.state.accepted){
             this.setState({err:"Please select an image."})
@@ -32,7 +28,6 @@ class EditableImage extends React.Component {
         
         const dbImage = this.props.data.find(img=>img.name === this.props.dbKey)
         const url = dbImage ? dbImage.url : null
-        console.log(dbImage)
         const endPoint = dbImage ? `/api/fileupload/${dbImage._id}/update` : '/api/fileupload/create'
 
         fetch(process.env.PUBLIC_URL+endPoint, {
