@@ -75,7 +75,7 @@ class Navigation extends React.Component {
                                         href="#contact">CONTACT</a>
                                     </li>
                                     <li>
-                                        <a onClick={this.openOrder} href="#order">ORDER</a>
+                                        <a href="http://californiakitchen.orderyoyo.com">ORDER</a>
                                     </li>
                                 </ul>
                             </div>

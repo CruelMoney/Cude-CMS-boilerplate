@@ -35,17 +35,15 @@ class HomePage extends React.Component {
                 <Col xs={12} >
                   <Slider images={sliderImages}>
                     <Row middle="xs" center="xs" className={styles.sliderContent}>
-                      <Col xs={10} sm={7} md={6} lg={5}  >
+                      <Col xs={10} sm={5} md={5} lg={5}  >
                         <div className="display">
                             <DBText dbKey="homepage-slider-welcome">
                               Welcome to California Kitchen
                             </DBText>
                         </div>
-                        <Button yoyoButton white>
-                          <DBText dbKey="homepage-slider-button">
-                            ORDER FOOD
-                          </DBText>
-                        </Button>
+                          <Button white>
+                              <a href="http://californiakitchen.orderyoyo.com">ORDER FOOD</a>
+                          </Button>
                       </Col>
                     </Row>
                   </Slider> 
@@ -87,10 +85,8 @@ class HomePage extends React.Component {
               <Featured 
                 bowls={this.props.data.favoriteBowls}
               />
-              <Button yoyoButton>
-                <DBText dbKey="homepage-our-favorites-button">
-                  FULL MENU
-                </DBText>
+              <Button>
+                  <a href="http://californiakitchen.orderyoyo.com">FULL MENU</a>
               </Button>
               </Col>
             </ Row>
@@ -115,7 +111,7 @@ class HomePage extends React.Component {
                   <DBImage dbKey="homepage-about-us-image" />
                 </div>
                 </Col>
-                <Col  xs={12} sm={6} center="xs">
+                <Col  xs={12} sm={6}>
                   <div className="manchet">
                     <DBText dbKey="homepage-about-us-manchet">
                       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

@@ -55,7 +55,8 @@ var backendConfig = {
     new ExtractTextPlugin({
             filename: 'static/css/[name].css',
             allChunks: true,
-            //disable: process.env.NODE_ENV !== 'production'
+            //ignoreOrder: true,
+            disable: process.env.NODE_ENV !== 'production'
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -187,43 +188,62 @@ var backendConfig = {
       // By default we support CSS Modules with the extension .modules.css
       {
         test: /\.css$/,
-        exclude:[ /\.module\.css$/],
-       
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-               localIdentName: '[local]_[hash:base64:5]',
+        exclude: /\.module\.css$/,
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: require.resolve('style-loader'),
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: false,
+                    sourceMap: true,
+                     localIdentName: '[local]_[hash:base64:5]',
+                  },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: postCSSLoaderOptions,
+                },
+              ],
             },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: postCSSLoaderOptions,
-          },
-        ],
+            
+          )
+        ),
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
       // using the extension .modules.css
       {
         test: /\.module\.css$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[local]_[hash:base64:5]',
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: require.resolve('style-loader'),
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: false,
+                    sourceMap: true,
+                    modules: true,
+                    localIdentName: '[local]_[hash:base64:5]',
+                  },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: postCSSLoaderOptions,
+                },
+              ],
             },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: postCSSLoaderOptions,
-          },
-        ],
+          )
+        ),
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+      
     ],
   },
 }

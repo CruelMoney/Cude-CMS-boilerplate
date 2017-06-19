@@ -8541,6 +8541,17 @@ scmp@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/scmp/-/scmp-1.0.2.tgz#bc4e4e2713252b04210cdff9cef3ade2c8fa7370"
 
+scrollmonitor-react@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/scrollmonitor-react/-/scrollmonitor-react-2.2.1.tgz#aa9946dd5986cd1a2a6aac49f682a6befb2a5421"
+  dependencies:
+    prop-types "^15.5.10"
+    scrollmonitor "^1.1.1"
+
+scrollmonitor@^1.1.1:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/scrollmonitor/-/scrollmonitor-1.2.3.tgz#87bf912ca28da64796f529e8129fa4a9b106fb74"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"

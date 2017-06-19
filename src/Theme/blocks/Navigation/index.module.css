@@ -33,9 +33,9 @@ nav{
     position: absolute;
     left: 50%;
     top: 0;
-    transform: translateX(-50%) translateY(40px);
-     transition: transform 0.8s;
-     will-change: transform;
+    transform: translateX(-50%) translateY(40px) translateZ(1px);
+    transition: transform 0.8s;
+    will-change: transform;
     svg{
         
         g > g:last-child  {

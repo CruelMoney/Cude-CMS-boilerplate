@@ -242,6 +242,7 @@ const commonPlugins = [
   new ExtractTextPlugin({
             filename: 'build/static/css/[name].css',
             allChunks: true,
+            //ignoreOrder: true,
             // dont use in development, here we want the hot stuff ;P
             disable: process.env.NODE_ENV !== 'production'
   }),

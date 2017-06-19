@@ -6,9 +6,22 @@ import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import DocumentMeta from 'react-document-meta'
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
+
 import App from './app'
 
 const htmlToString = (store, req, context) => {
+    const sheet = new ServerStyleSheet()
+    const app = sheet.collectStyles( 
+      <Provider store={store}>
+        <StaticRouter
+          location={req.url}
+          context={context}>
+            <App/>
+        </StaticRouter>
+      </Provider>)
+    const styleTags = sheet.getStyleElement()
+
     return renderToString(
        <html lang="en">
         <head>
@@ -22,25 +35,17 @@ const htmlToString = (store, req, context) => {
           <meta name="application-name" content="California kitchen"/>
           <meta name="theme-color" content="#ffffff"/>
           
-          {/* HTTPS not available */}
+          {/* HTTPS not available
           <script async id="iwaiter-popup" src="http://californiakitchen.orderyoyo.com/scripts/other/popup.js"></script>
-          
-
-
+          */}
 
           {"{{meta}}"}
+          {styleTags}
           {"{{cssBundles}}"}
         </head>
         <body>
           <div id="app">
-            <Provider store={store}>
-              <StaticRouter
-                location={req.url}
-                context={context}
-              >
-                <App/>
-              </StaticRouter>
-            </Provider>
+           {app}
           </div>
           <script>{"window.__INITIAL_STATE = {{initialState}}"}</script>
           {"{{jsBundles}}"}

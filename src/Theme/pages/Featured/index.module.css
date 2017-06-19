@@ -7,6 +7,8 @@
     margin-bottom: 1.2rem;
     height: 300px;
     position: relative;
+
+
     .info{
         position: relative;
         z-index: 1;
@@ -67,4 +69,28 @@
   }
 }
 
-  
+.animateReveal{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .6s;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+.reveal.animateReveal{
+    opacity: 1;
+    transform: none;
+     transition-delay: 0s;
+}
+
+.animateReveal:nth-of-type(1){
+    transition-delay: .5s;
+}
+.animateReveal:nth-of-type(2){
+    transition-delay: .75s;
+}
+.animateReveal:nth-of-type(3){
+    transition-delay: .5s;
+}
+.animateReveal:nth-of-type(4){
+   transition-delay: .75s;
+}
