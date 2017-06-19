@@ -3,7 +3,7 @@ nav{
     top: 0;
     left: 0;
     width:100%;
-    background: rgba(255,255,255,0.9);
+    background: rgb(255,255,255);
     z-index: 10;
 }
 .grid{
@@ -37,7 +37,7 @@ nav{
      transition: transform 0.8s;
      will-change: transform;
     svg{
-       
+        
         g > g:last-child  {
             transition: opacity 0.8s;
         }
@@ -85,11 +85,15 @@ nav{
     }
 }
 
-.facebook:hover svg{
-    fill: #3b5998;
+.instagram svg,
+.facebook svg{
+   transition: fill 0.4s;
 }
-.instagram:hover svg{
-    fill: #e1306c;
+
+.instagram:hover svg,
+.facebook:hover svg{
+    fill: var(--color-yellow);
+    
 }
 
 @media only screen and (max-device-width:  480px){
@@ -101,6 +105,7 @@ nav{
         transition: opacity 0.4s;
         li{
             margin-left: 20px;
+            pointer-events: none;
         }
     }
     .menu{
@@ -129,6 +134,9 @@ nav{
     ul{
         opacity: 1;
         transition: opacity 0.8s;
+        li{
+           pointer-events: all;
+        }
     }
 }
 

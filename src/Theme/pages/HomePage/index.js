@@ -35,7 +35,7 @@ class HomePage extends React.Component {
                 <Col xs={12} >
                   <Slider images={sliderImages}>
                     <Row middle="xs" center="xs" className={styles.sliderContent}>
-                      <Col lg={4} md={6} sm={7} xs={11}  >
+                      <Col xs={10} sm={7} md={6} lg={5}  >
                         <div className="display">
                             <DBText dbKey="homepage-slider-welcome">
                               Welcome to California Kitchen
@@ -57,7 +57,7 @@ class HomePage extends React.Component {
           <section className="full-width">
             <Grid fluid className={"container"}>
             <Row center="xs">
-              <Col sm={6} xs={12} >
+              <Col  xs={12} sm={6} >
                 <h2>
                   <DBText dbKey="homepage-welcome">
                     welcome
@@ -78,7 +78,7 @@ class HomePage extends React.Component {
               <div>
             <section>
             <Row center="xs" >
-              <Col sm={10} xs={12}>
+              <Col xs={12} sm={10} >
               <h2>
                 <DBText dbKey="homepage-our-favorites">
                   our favorites
@@ -103,19 +103,19 @@ class HomePage extends React.Component {
             <ScrollableAnchor id={"about"}>
               <div>
             <Row  center="xs">
-              <Col sm={8} xs={12}>
+              <Col xs={12} sm={8} >
               <h2>
                 <DBText dbKey="homepage-about-us">
                   about us
                 </DBText>
               </h2>
-              <Row className={styles.aboutUs}>
-                <Col sm={6} xs={12} center="xs">
+              <Row center="xs" className={styles.aboutUs}>
+                <Col xs={12} sm={6}  >
                 <div className={styles.aboutImage}>
                   <DBImage dbKey="homepage-about-us-image" />
                 </div>
                 </Col>
-                <Col sm={6} xs={12} center="xs">
+                <Col  xs={12} sm={6} center="xs">
                   <div className="manchet">
                     <DBText dbKey="homepage-about-us-manchet">
                       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

@@ -37,10 +37,10 @@ class Footer extends React.Component {
               </div>
               <div className={styles.contact}>
                 <p>
-                 <span className="text-icon">E </span> <a href={email}>{email}</a>
+                 <span className="text-icon">E </span> <a href={"mailto:"+email}>{email}</a>
                 </p>
                 <p>
-                  <span className="text-icon">T </span> <a href={telephone}>{telephone}</a>
+                  <span className="text-icon">T </span> <a href={"tel:"+telephone}>{telephone}</a>
                 </p>
                 <br />
                 <p>{street}</p>

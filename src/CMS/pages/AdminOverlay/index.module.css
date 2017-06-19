@@ -18,13 +18,6 @@
     transition: 0.3s;
     transform: translateY(-50px);
 	 z-index: 100;
-
-    :global{
-        button, .button-look{
-            color: var(--main-text-color);
-            border-color: var(--main-text-color);
-        }
-    }
 }
 .adminOverlay > .content{
 	transition: transform 0.3s;

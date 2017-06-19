@@ -38,17 +38,17 @@ class Controls extends React.Component {
             Welcome {this.props.user.name.first}
             <button 
               onClick={this.props.toggleEditmode}
-              className="toggle-editmode">
+              className="button-look">
              EDIT
             </button>
             <button 
               onClick={()=>this.props.saveEdits(this.props.apiData)}
-              className="save-edits">
+              className="button-look">
              SAVE
             </button>
             <button 
               onClick={()=>this.props.toggleCallback(false)}
-              className="hide">
+              className="button-look">
              HIDE
             </button>
             <a 

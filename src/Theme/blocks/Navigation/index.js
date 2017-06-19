@@ -88,13 +88,13 @@ class Navigation extends React.Component {
                             </div>   
                             <div>
                             <div className={styles.social}>
-                                <p className="faded">FOLLOW US</p>
+                                <p className="faded button-look">FOLLOW US</p>
                                 <ul className={styles.icons}>
                                     <li>
                                         <a className={"faded " + styles.facebook} target="_blank" href={facebook}><Facebook height={20} width={20} /></a>
                                     </li>
                                     <li>
-                                        <a className={"faded " + styles.instagram} target="_blank" href={instagram}><Instagram height={20} width={20} /></a>
+                                        <a className={"faded " + styles.instagram} target="_blank" href={instagram}><Instagram height={21} width={21} /></a>
                                     </li>
                                 </ul>         
                             </div>    

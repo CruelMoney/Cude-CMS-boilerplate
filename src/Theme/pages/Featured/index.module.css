@@ -26,18 +26,18 @@
             text-transform: uppercase;
             span{
                 text-transform: none;
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 14px;
-                margin-bottom: 10px;
+                margin-bottom: 13px;
                 display: block;
-                color: var(--color-yellow);
+                //color: var(--color-yellow);
             }
         }
         p{
             white-space: pre-line;
         }
         .price{
-            margin-top: 10px;
+            margin-top: 13px;
             font-weight: var(--weight-demi);
         }
 

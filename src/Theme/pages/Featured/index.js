@@ -12,7 +12,7 @@ class Featured extends React.Component {
         <Row className={styles.bowls}>
           {this.props.bowls && this.props.bowls.map(bowl=>{
             return(
-              <Col key={bowl._id} sm={6} xs={12} >
+              <Col key={bowl._id} xs={12} sm={6} >
               <div className={styles.bowl}>
                 <div className={styles.info}>
                   <h3
