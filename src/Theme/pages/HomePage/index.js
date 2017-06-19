@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import styles from './index.module.css'
 import DocumentMeta from 'react-document-meta';
 import Slider from '../../blocks/Slider'

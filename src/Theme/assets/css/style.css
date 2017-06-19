@@ -96,7 +96,7 @@ body{
 section{
   margin-bottom: 99px;
 }
-div[class^="col-"]{
+div[class^="Col_"]{
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 }
@@ -204,8 +204,12 @@ ul{
 
 
   /* LAYOUT */
+  div[class^="Col_"]{
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
   /* LAYOUT END */
-
+    
 
   /* COMMON ELEMENTS */
   /* COMMON ELEMENTS END */

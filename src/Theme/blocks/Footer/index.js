@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.css'
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-styled-flexboxgrid';
 import DBText from '../../../CMS/components/DBText'
 
 

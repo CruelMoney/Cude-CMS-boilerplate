@@ -94,7 +94,6 @@ const render = (initialState, req, res) => {
           cssBundles = '<link rel="stylesheet" href="/build/static/css/main.css" />'
         }
 
-        console.log("CSSBUNDLES: "+ cssBundles)
         // Create new html
         RenderedApp = RenderedApp.replace('{{initialState}}', JSON.stringify(store.getState()))
         RenderedApp = RenderedApp.replace('{{meta}}', meta)
