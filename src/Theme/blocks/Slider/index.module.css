@@ -4,6 +4,7 @@
     position: relative;
     height: calc(100vh - 191px - 61px);
     background: black;
+    overflow:hidden;
     img{
         object-fit:cover;
         opacity: 0.8;

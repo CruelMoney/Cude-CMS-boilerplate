@@ -4,7 +4,6 @@ import Homepage from './pages/HomePage/'
 import Footer from './blocks/Footer/';
 import fetcher from '../CMS/higher-order-components/Fetcher'
 import './assets/css/style.css'; //theme style
-import './assets/js/orderYOYO.js'; 
 
 class Index extends React.Component {
   
