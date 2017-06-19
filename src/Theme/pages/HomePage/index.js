@@ -41,7 +41,7 @@ class HomePage extends React.Component {
                               Welcome to California Kitchen
                             </DBText>
                         </div>
-                        <Button white>
+                        <Button yoyoButton white>
                           <DBText dbKey="homepage-slider-button">
                             ORDER FOOD
                           </DBText>
@@ -87,7 +87,7 @@ class HomePage extends React.Component {
               <Featured 
                 bowls={this.props.data.favoriteBowls}
               />
-              <Button>
+              <Button yoyoButton>
                 <DBText dbKey="homepage-our-favorites-button">
                   FULL MENU
                 </DBText>

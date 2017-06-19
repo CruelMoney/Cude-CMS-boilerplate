@@ -27,6 +27,10 @@ class Navigation extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+    openOrder=()=>{
+        window.iwaiterPopup()
+    }
+
   handleScroll=(e)=>{
         last_known_scroll_position = window.scrollY;
         if (!ticking) {
@@ -71,7 +75,7 @@ class Navigation extends React.Component {
                                         href="#contact">CONTACT</a>
                                     </li>
                                     <li>
-                                        <a href="#order">ORDER</a>
+                                        <a onClick={this.openOrder} href="#order">ORDER</a>
                                     </li>
                                 </ul>
                             </div>

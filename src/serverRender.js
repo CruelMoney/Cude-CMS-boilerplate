@@ -21,6 +21,7 @@ const htmlToString = (store, req, context) => {
           <meta name="apple-mobile-web-app-title" content="California kitchen"/>
           <meta name="application-name" content="California kitchen"/>
           <meta name="theme-color" content="#ffffff"/>
+          <script async id="iwaiter-popup" src="http://californiakitchen.orderyoyo.com/scripts/other/popup.js"></script>
           {"{{meta}}"}
           {"{{cssBundles}}"}
         </head>
@@ -37,6 +38,7 @@ const htmlToString = (store, req, context) => {
           </div>
           <script>{"window.__INITIAL_STATE = {{initialState}}"}</script>
           {"{{jsBundles}}"}
+         
         </body>
         </html>
     )

@@ -2,10 +2,23 @@ import React from 'react';
 import styles from './index.module.css'
 
 class Button extends React.Component {
-  state={hover:false}
- 
+  state={hover:false, yoyoButton:false}
+  
+  componentDidMount(){
+    if(this.props.yoyoButton){
+      this.setState({yoyoButton:true})
+    }
+  }
+  handleClick=()=>{
+    if(this.state.yoyoButton){
+      window.iwaiterPopup()
+    }else{
+      this.props.onClick && this.props.onClick()
+    }
+  }
+
   render() {
-    let {mainColor, hoverTextColor, white, ...rest} = {...this.props}
+    let {mainColor, hoverTextColor, white, yoyoButton, ...rest} = {...this.props}
     return (
    <div 
     {...rest}
@@ -13,7 +26,7 @@ class Button extends React.Component {
    >
      <div className={styles.hover}></div>
      <button
-       
+        onClick={this.handleClick}
         className={styles.button}
         onMouseEnter={()=>{
           this.setState({hover:true})
