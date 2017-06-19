@@ -4,7 +4,7 @@ import fetcher from '../../higher-order-components/Fetcher/index';
 import PropTypes from 'prop-types'
 import Dropzone from 'react-dropzone'
 import styles from './index.module.css'
-
+import LoadingImage from '../LoadingImage'
  
 
 class EditableImage extends React.Component {
@@ -102,7 +102,7 @@ class EditableImage extends React.Component {
                     </div>
 
                     {url ? 
-                    <img src={process.env.PUBLIC_URL + url} alt=""/>
+                    <LoadingImage src={process.env.PUBLIC_URL + url} alt=""/>
                     : null}
 
                     
@@ -110,7 +110,7 @@ class EditableImage extends React.Component {
                 </div>
             :
             ( url ? 
-            <img src={process.env.PUBLIC_URL + url} alt=""/>
+            <LoadingImage src={process.env.PUBLIC_URL + url} alt=""/>
             : null)
         
         );

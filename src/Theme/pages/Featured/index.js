@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from './index.module.css'
+import LoadingImage from '../../../CMS/components/LoadingImage'
 
 
 class Featured extends React.Component {
@@ -30,7 +31,7 @@ class Featured extends React.Component {
                     {bowl.price}
                   </p>
                 </div>
-                {bowl.image ? <img src={"/uploads/bowls/"+bowl.image.filename} alt="bowl"/> : null}
+                {bowl.image ? <LoadingImage src={"/uploads/bowls/"+bowl.image.filename} alt="bowl"/> : null}
               </div>
               </Col>
             )

@@ -3,6 +3,7 @@ import styles from './index.module.css'
 import ReactSlider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LoadingImage from '../../../CMS/components/LoadingImage'
 
 class Slider extends React.Component {
     
@@ -22,7 +23,7 @@ class Slider extends React.Component {
                 <ReactSlider {...settings}>
                     {
                     this.props.images.map((img,idx)=>{
-                        return <img 
+                        return <LoadingImage 
                         draggable="false"
                         key={"sliderimage-"+idx} src={img.secure_url} alt="food"/>
                     })}

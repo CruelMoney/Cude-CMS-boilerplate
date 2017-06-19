@@ -21,7 +21,10 @@ const htmlToString = (store, req, context) => {
           <meta name="apple-mobile-web-app-title" content="California kitchen"/>
           <meta name="application-name" content="California kitchen"/>
           <meta name="theme-color" content="#ffffff"/>
+          {/*
+          HTTPS not available
           <script async id="iwaiter-popup" src="http://californiakitchen.orderyoyo.com/scripts/other/popup.js"></script>
+          */}
           {"{{meta}}"}
           {"{{cssBundles}}"}
         </head>
