@@ -179,6 +179,7 @@ const defaultConfig = {
                     importLoaders: 1,
                     minimize: true,
                     sourceMap: true,
+                     localIdentName: '[local]_[hash:base64:5]',
                   },
                 },
                 {
