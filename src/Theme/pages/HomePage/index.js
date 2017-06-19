@@ -57,7 +57,7 @@ class HomePage extends React.Component {
           <section className="full-width">
             <Grid fluid className={"container"}>
             <Row center="xs">
-              <Col sm={6} >
+              <Col sm={6} xs={12} >
                 <h2>
                   <DBText dbKey="homepage-welcome">
                     welcome
@@ -78,7 +78,7 @@ class HomePage extends React.Component {
               <div>
             <section>
             <Row center="xs" >
-              <Col sm={10} >
+              <Col sm={10} xs={12}>
               <h2>
                 <DBText dbKey="homepage-our-favorites">
                   our favorites
@@ -103,19 +103,19 @@ class HomePage extends React.Component {
             <ScrollableAnchor id={"about"}>
               <div>
             <Row  center="xs">
-              <Col sm={8} >
+              <Col sm={8} xs={12}>
               <h2>
                 <DBText dbKey="homepage-about-us">
                   about us
                 </DBText>
               </h2>
               <Row className={styles.aboutUs}>
-                <Col sm={6} center="xs">
+                <Col sm={6} xs={12} center="xs">
                 <div className={styles.aboutImage}>
                   <DBImage dbKey="homepage-about-us-image" />
                 </div>
                 </Col>
-                <Col sm={6} center="xs">
+                <Col sm={6} xs={12} center="xs">
                   <div className="manchet">
                     <DBText dbKey="homepage-about-us-manchet">
                       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

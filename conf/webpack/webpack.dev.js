@@ -223,25 +223,6 @@ var backendConfig = {
           },
         ],
       },
-      {
-        test: /\.css$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-              modules: true,
-              localIdentName: '[local]_[hash:base64:5]',
-            },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: postCSSLoaderOptions,
-          },
-        ],
-        include: /flexboxgrid/
-      }
     ],
   },
 }

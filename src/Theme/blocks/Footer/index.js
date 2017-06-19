@@ -24,7 +24,7 @@ class Footer extends React.Component {
         id="contact"
         className="container" fluid>
             <Row center="xs">
-              <Col sm={6} >
+              <Col sm={6} xs={12}>
               <h2>
                 <DBText dbKey="footer-contact">
                   contact
