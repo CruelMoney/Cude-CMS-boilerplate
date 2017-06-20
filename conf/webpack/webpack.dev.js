@@ -191,6 +191,7 @@ var backendConfig = {
       // "style" loader turns CSS into JS modules that inject <style> tags.
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
+<<<<<<< HEAD
       // By default we support CSS Modules with the extension .modules.css
       {
         test: /\.css$/,
@@ -214,6 +215,21 @@ var backendConfig = {
                   options: postCSSLoaderOptions,
                 },
               ],
+=======
+      { 
+        test: [/\.scss$/,/\.css$/],       
+        loader: ExtractTextPlugin.extract({
+          fallback: require.resolve('style-loader'),
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                  localIdentName: '[local].[hash:8]',
+                  modules: true,
+                  minimize: true,
+                  sourceMap: true,
+              }
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
             },
             
           )
@@ -245,11 +261,20 @@ var backendConfig = {
                 },
               ],
             },
+<<<<<<< HEAD
           )
         ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       
+=======
+            {
+              loader: require.resolve('sass-loader')
+            }
+          ]
+        }),
+      }
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
     ],
   },
 }

@@ -12,6 +12,16 @@ exports = module.exports = async (req, res, next) => {
     },
   }
 
+<<<<<<< HEAD
+=======
+  // Create store and context to be populated one first render
+  var initialState = {
+    adminOverlay: {
+      user: req.user
+    },
+  }
+
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
   try {
       //  TODO  move this fetching to the frontend
       const RenderedApp = await render(initialState, req, res)

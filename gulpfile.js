@@ -161,6 +161,7 @@ const defaultConfig = {
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
+<<<<<<< HEAD
       // "style" loader normally turns CSS into JS modules injecting <style>,
       // but unlike in development configuration, we do something different.
       // `ExtractTextPlugin` first applies the "postcss" and "css" loaders
@@ -176,6 +177,15 @@ const defaultConfig = {
         exclude: /\.module\.css$/,
         loader: ExtractTextPlugin.extract(
           Object.assign(
+=======
+      // "style" loader turns CSS into JS modules that inject <style> tags.
+      // In production, we use a plugin to extract that CSS to a file, but
+      // in development "style" loader enables hot editing of CSS.
+      { 
+        test: [/\.scss$/,/\.css$/],
+        loader: ExtractTextPlugin.extract({
+          use: [
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
             {
               //fallback: require.resolve('style-loader'),
               use: [

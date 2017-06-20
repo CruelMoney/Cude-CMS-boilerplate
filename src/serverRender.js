@@ -25,7 +25,10 @@ const htmlToString = (store, req, context) => {
     return renderToString(
        <html lang="en">
         <head>
+<<<<<<< HEAD
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
+=======
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
           <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png"/>
           <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png"/>
           <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png"/>
@@ -34,6 +37,7 @@ const htmlToString = (store, req, context) => {
           <meta name="apple-mobile-web-app-title" content="California kitchen"/>
           <meta name="application-name" content="California kitchen"/>
           <meta name="theme-color" content="#ffffff"/>
+<<<<<<< HEAD
           
           {/* HTTPS not available
           <script async id="iwaiter-popup" src="http://californiakitchen.orderyoyo.com/scripts/other/popup.js"></script>
@@ -41,6 +45,9 @@ const htmlToString = (store, req, context) => {
 
           {"{{meta}}"}
           {styleTags}
+=======
+          {"{{meta}}"}
+>>>>>>> 8fd70cae24fe9765ce8b8e5295ade64005c7fffe
           {"{{cssBundles}}"}
         </head>
         <body>
