@@ -82,6 +82,7 @@ button, .button-look, a, h2{
   color: var(--main-text-color);
   transition: 0.4s;
   letter-spacing: 1px;
+  font-family: Montserrat,sans-serif;
 }
 button.button-look{
     font-weight: var(--weight-bold);
