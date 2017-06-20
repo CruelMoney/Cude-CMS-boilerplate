@@ -5,6 +5,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var fs = require('fs');
+var cssvariables = require('postcss-css-variables');
 
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
@@ -28,6 +29,11 @@ const postCSSLoaderOptions = {
       flexbox: 'no-2009',
     }),
     require('postcss-nested'),
+    cssvariables({
+      /*options*/
+      preserve:true // If true, computes the variable and set it as fallback for var()
+    }),
+    require('postcss-object-fit-images')
   ],
 };
 

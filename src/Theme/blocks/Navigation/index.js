@@ -32,7 +32,7 @@ class Navigation extends React.Component {
     }
 
   handleScroll=(e)=>{
-        last_known_scroll_position = window.scrollY;
+        last_known_scroll_position = window.scrollY || document.documentElement.scrollTop;
         if (!ticking) {
             window.requestAnimationFrame(()=> {
             this.animate(last_known_scroll_position);

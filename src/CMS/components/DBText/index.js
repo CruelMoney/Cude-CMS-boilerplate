@@ -82,7 +82,7 @@ class ConnectedText extends React.Component {
 
 
     render() {
-        const dbText = this.props.data.find(t=>t.key === this.props.dbKey) || {}
+        const dbText = Array.isArray(this.props.data) && this.props.data.find(t=>t.key === this.props.dbKey) || {}
         const content = dbText ? dbText.content : null
         return (
                 <EditableText 

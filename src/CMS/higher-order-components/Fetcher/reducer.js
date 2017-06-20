@@ -58,7 +58,7 @@ export default function reducer(state = initialState, action) {
         const hasBeenEdited = state[action.endpoint].edits
         var edits = {}
         //If it has not been edited copy over the current values
-        if(!hasBeenEdited && state[action.endpoint].data){
+        if(!hasBeenEdited && state[action.endpoint].data && Array.isArray(state[action.endpoint].data)){
             //get content
             const oldContent = state[action.endpoint].data.find(d=>d._id === action.id)
             edits = oldContent

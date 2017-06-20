@@ -26,7 +26,7 @@ class EditableImage extends React.Component {
 
         formData.append('file_upload', theFile, this.props.dbKey + "." + theFile.name.split('.').pop()); //This is the raw file that was selected
         
-        const dbImage = this.props.data.find(img=>img.name === this.props.dbKey)
+        const dbImage = Array.isArray(this.props.data) && this.props.data.find(img=>img.name === this.props.dbKey)
         const url = dbImage ? dbImage.url : null
         const endPoint = dbImage ? `/api/fileupload/${dbImage._id}/update` : '/api/fileupload/create'
 
@@ -63,7 +63,7 @@ class EditableImage extends React.Component {
     }
  
     render() {
-        const dbImage = this.props.data.find(img=>img.name === this.props.dbKey)
+        const dbImage = Array.isArray(this.props.data) && this.props.data.find(img=>img.name === this.props.dbKey)
         const url = dbImage ? dbImage.url : this.state.url
         return (
             this.props.editMode ?

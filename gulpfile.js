@@ -8,6 +8,7 @@ const fs = require('fs-extra');
 const DeepMerge = require('deep-merge');
 const Visualizer = require('webpack-visualizer-plugin');
 const webpackSourceMapSupport = require("webpack-source-map-support");
+var cssvariables = require('postcss-css-variables');
 require('dotenv').config()
 const resolveOwn = relativePath => path.resolve(__dirname, '.', relativePath);
 
@@ -38,6 +39,11 @@ const postCSSLoaderOptions = {
       flexbox: 'no-2009',
     }),
      require('postcss-nested'),
+    cssvariables({
+      /*options*/
+      preserve:true // If true, computes the variable and set it as fallback for var()
+    }),
+    require('postcss-object-fit-images')
   ],
 };
 
